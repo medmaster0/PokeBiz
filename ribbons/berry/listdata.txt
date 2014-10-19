@@ -1,0 +1,66 @@
+
+No.	 Spr	 Name	 Effect	 Tree
+01	Cheri Berry	Cheri Berry	 Cures Paralysis	AllTreeSeed.png	AllTreeSprout.png	CheriTreeTaller.png	CheriTreeBloom.png	CheriTreeBerry.png
+02	Chesto Berry	Chesto Berry	 Cures Sleep	AllTreeSeed.png	AllTreeSprout.png	ChestoTreeTaller.png	ChestoTreeBloom.png	ChestoTreeBerry.png
+03	Pecha Berry	Pecha Berry	 Cures Poison	AllTreeSeed.png	AllTreeSprout.png	PechaTreeTaller.png	PechaTreeBloom.png	PechaTreeBerry.png
+04	Rawst Berry	Rawst Berry	 Cures Burn	AllTreeSeed.png	AllTreeSprout.png	RawstTreeTaller.png	RawstTreeBloom.png	RawstTreeBerry.png
+05	Aspear Berry	Aspear Berry	 Cures Freeze	AllTreeSeed.png	AllTreeSprout.png	AspearTreeTaller.png	AspearTreeBloom.png	AspearTreeBerry.png
+06	Leppa Berry	Leppa Berry	 Restores 10 PP	AllTreeSeed.png	AllTreeSprout.png	LeppaTreeTaller.png	LeppaTreeBloom.png	LeppaTreeBerry.png
+07	Oran Berry	Oran Berry	 Restores 10 HP	AllTreeSeed.png	AllTreeSprout.png	OranTreeTaller.png	OranTreeBloom.png	OranTreeBerry.png
+08	Persim Berry	Persim Berry	 Cures Confusion	AllTreeSeed.png	AllTreeSprout.png	PersimTreeTaller.png	PersimTreeBloom.png	PersimTreeBerry.png
+09	Lum Berry	Lum Berry	 Cures any status condition	AllTreeSeed.png	AllTreeSprout.png	LumTreeTaller.png	LumTreeBloom.png	LumTreeBerry.png
+10	Sitrus Berry	Sitrus Berry	 Restores 25% HP	AllTreeSeed.png	AllTreeSprout.png	SitrusTreeTaller.png	SitrusTreeBloom.png	SitrusTreeBerry.png
+11	Figy Berry	Figy Berry	 Restores 12.5% HP, confuses Pokemon that dislike spicy food	AllTreeSeed.png	AllTreeSprout.png	FigyTreeTaller.png	FigyTreeBloom.png	FigyTreeBerry.png
+12	Wiki Berry	Wiki Berry	 Restores 12.5% HP, confuses Pokemon that dislike dry food	AllTreeSeed.png	AllTreeSprout.png	WikiTreeTaller.png	WikiTreeBloom.png	WikiTreeBerry.png
+13	Mago Berry	Mago Berry	 Restores 12.5% HP, confuses Pokemon that dislike sweet food	AllTreeSeed.png	AllTreeSprout.png	MagoTreeTaller.png	MagoTreeBloom.png	MagoTreeBerry.png
+14	Aguav Berry	Aguav Berry	 Restores 12.5% HP, confuses Pokemon that dislike bitter food	AllTreeSeed.png	AllTreeSprout.png	AguavTreeTaller.png	AguavTreeBloom.png	AguavTreeBerry.png
+15	Iapapa Berry	Iapapa Berry	 Restores 12.5% HP, confuses Pokemon that dislike sour food	AllTreeSeed.png	AllTreeSprout.png	IapapaTreeTaller.png	IapapaTreeBloom.png	IapapaTreeBerry.png
+16	Razz Berry	Razz Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	RazzTreeTaller.png	RazzTreeBloom.png	RazzTreeBerry.png
+17	Bluk Berry	Bluk Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	BlukTreeTaller.png	BlukTreeBloom.png	BlukTreeBerry.png
+18	Nanab Berry	Nanab Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	NanabTreeTaller.png	NanabTreeBloom.png	NanabTreeBerry.png
+19	Wepear Berry	Wepear Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	WepearTreeTaller.png	WepearTreeBloom.png	WepearTreeBerry.png
+20	Pinap Berry	Pinap Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	PinapTreeTaller.png	PinapTreeBloom.png	PinapTreeBerry.png
+21	Pomeg Berry	Pomeg Berry	 Lowers HP EVs, raises friendship	AllTreeSeed.png	AllTreeSprout.png	PomegTreeTaller.png	PomegTreeBloom.png	PomegTreeBerry.png
+22	Kelpsy Berry	Kelpsy Berry	 Lowers Attack EVs, raises friendship	AllTreeSeed.png	AllTreeSprout.png	KelpsyTreeTaller.png	KelpsyTreeBloom.png	KelpsyTreeBerry.png
+23	Qualot Berry	Qualot Berry	 Lowers Defense EVs, raises friendship	AllTreeSeed.png	AllTreeSprout.png	QualotTreeTaller.png	QualotTreeBloom.png	QualotTreeBerry.png
+24	Hondew Berry	Hondew Berry	 Lowers Special Attack EVs, raises friendship	AllTreeSeed.png	AllTreeSprout.png	HondewTreeTaller.png	HondewTreeBloom.png	HondewTreeBerry.png
+25	Grepa Berry	Grepa Berry	 Lowers Special Defense EVs, raises friendship	AllTreeSeed.png	AllTreeSprout.png	GrepaTreeTaller.png	GrepaTreeBloom.png	GrepaTreeBerry.png
+26	Tamato Berry	Tamato Berry	 Lowers Speed EVs, raises friendship	AllTreeSeed.png	AllTreeSprout.png	TamatoTreeTaller.png	TamatoTreeBloom.png	TamatoTreeBerry.png
+27	Cornn Berry	Cornn Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	CornnTreeTaller.png	CornnTreeBloom.png	CornnTreeBerry.png
+28	Magost Berry	Magost Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	MagostTreeTaller.png	MagostTreeBloom.png	MagostTreeBerry.png
+29	Rabuta Berry	Rabuta Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	RabutaTreeTaller.png	RabutaTreeBloom.png	RabutaTreeBerry.png
+30	Nomel Berry	Nomel Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	NomelTreeTaller.png	NomelTreeBloom.png	NomelTreeBerry.png
+31	Spelon Berry	Spelon Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	SpelonTreeTaller.png	SpelonTreeBloom.png	SpelonTreeBerry.png
+32	Pamtre Berry	Pamtre Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	PamtreTreeTaller.png	PamtreTreeBloom.png	PamtreTreeBerry.png
+33	Watmel Berry	Watmel Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	WatmelTreeTaller.png	WatmelTreeBloom.png	WatmelTreeBerry.png
+34	Durin Berry	Durin Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	DurinTreeTaller.png	DurinTreeBloom.png	DurinTreeBerry.png
+35	Belue Berry	Belue Berry	 Able to be traded for Accessories	AllTreeSeed.png	AllTreeSprout.png	BelueTreeTaller.png	BelueTreeBloom.png	BelueTreeBerry.png
+36	Occa Berry	Occa Berry	 Weakens foe's super effective Fire-type move	AllTreeSeed.png	AllTreeSprout.png	OccaTreeTaller.png	OccaTreeBloom.png	OccaTreeBerry.png
+37	Passho Berry	Passho Berry	 Weakens foe's super effective Water-type move	AllTreeSeed.png	AllTreeSprout.png	PasshoTreeTaller.png	PasshoTreeBloom.png	PasshoTreeBerry.png
+38	Wacan Berry	Wacan Berry	 Weakens foe's super effective Electric-type move	AllTreeSeed.png	AllTreeSprout.png	WacanTreeTaller.png	WacanTreeBloom.png	WacanTreeBerry.png
+39	Rindo Berry	Rindo Berry	 Weakens foe's super effective Grass-type move	AllTreeSeed.png	AllTreeSprout.png	RindoTreeTaller.png	RindoTreeBloom.png	RindoTreeBerry.png
+40	Yache Berry	Yache Berry	 Weakens foe's super effective Ice-type move	AllTreeSeed.png	AllTreeSprout.png	YacheTreeTaller.png	YacheTreeBloom.png	YacheTreeBerry.png
+41	Chople Berry	Chople Berry	 Weakens foe's super effective Fighting-type move	AllTreeSeed.png	AllTreeSprout.png	ChopleTreeTaller.png	ChopleTreeBloom.png	ChopleTreeBerry.png
+42	Kebia Berry	Kebia Berry	 Weakens foe's super effective Poison-type move	AllTreeSeed.png	AllTreeSprout.png	KebiaTreeTaller.png	KebiaTreeBloom.png	KebiaTreeBerry.png
+43	Shuca Berry	Shuca Berry	 Weakens foe's super effective Ground-type move	AllTreeSeed.png	AllTreeSprout.png	ShucaTreeTaller.png	ShucaTreeBloom.png	ShucaTreeBerry.png
+44	Coba Berry	Coba Berry	 Weakens foe's super effective Flying-type move	AllTreeSeed.png	AllTreeSprout.png	CobaTreeTaller.png	CobaTreeBloom.png	CobaTreeBerry.png
+45	Payapa Berry	Payapa Berry	 Weakens foe's super effective Psychic-type move	AllTreeSeed.png	AllTreeSprout.png	PayapaTreeTaller.png	PayapaTreeBloom.png	PayapaTreeBerry.png
+46	Tanga Berry	Tanga Berry	 Weakens foe's super effective Bug-type move	AllTreeSeed.png	AllTreeSprout.png	TangaTreeTaller.png	TangaTreeBloom.png	TangaTreeBerry.png
+47	Charti Berry	Charti Berry	 Weakens foe's super effective Rock-type move	AllTreeSeed.png	AllTreeSprout.png	ChartiTreeTaller.png	ChartiTreeBloom.png	ChartiTreeBerry.png
+48	Kasib Berry	Kasib Berry	 Weakens foe's super effective Ghost-type move	AllTreeSeed.png	AllTreeSprout.png	KasibTreeTaller.png	KasibTreeBloom.png	KasibTreeBerry.png
+49	Haban Berry	Haban Berry	 Weakens foe's super effective Dragon-type move	AllTreeSeed.png	AllTreeSprout.png	HabanTreeTaller.png	HabanTreeBloom.png	HabanTreeBerry.png
+50	Colbur Berry	Colbur Berry	 Weakens foe's super effective Dark-type move	AllTreeSeed.png	AllTreeSprout.png	ColburTreeTaller.png	ColburTreeBloom.png	ColburTreeBerry.png
+51	Babiri Berry	Babiri Berry	 Weakens foe's super effective Steel-type move	AllTreeSeed.png	AllTreeSprout.png	BabiriTreeTaller.png	BabiriTreeBloom.png	BabiriTreeBerry.png
+52	Chilan Berry	Chilan Berry	 Weakens foe's Normal-type move	AllTreeSeed.png	AllTreeSprout.png	ChilanTreeTaller.png	ChilanTreeBloom.png	ChilanTreeBerry.png
+53	Liechi Berry	Liechi Berry	 Raises Attack when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	LiechiTreeTaller.png	LiechiTreeBloom.png	LiechiTreeBerry.png
+54	Ganlon Berry	Ganlon Berry	 Raises Defense when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	GanlonTreeTaller.png	GanlonTreeBloom.png	GanlonTreeBerry.png
+55	Salac Berry	Salac Berry	 Raises Speed when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	SalacTreeTaller.png	SalacTreeBloom.png	SalacTreeBerry.png
+56	Petaya Berry	Petaya Berry	 Raises Special Attack when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	PetayaTreeTaller.png	PetayaTreeBloom.png	PetayaTreeBerry.png
+57	Apicot Berry	Apicot Berry	 Raises Special Defense when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	ApicotTreeTaller.png	ApicotTreeBloom.png	ApicotTreeBerry.png
+58	Lansat Berry	Lansat Berry	 Raises critical hit ratio when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	LansatTreeTaller.png	LansatTreeBloom.png	LansatTreeBerry.png
+59	Starf Berry	Starf Berry	 Sharply raises a random stat when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	StarfTreeTaller.png	StarfTreeBloom.png	StarfTreeBerry.png
+60	Enigma Berry	Enigma Berry	 Restores holder's HP if hit by a super effective move	AllTreeSeed.png	AllTreeSprout.png	EnigmaTreeTaller.png	EnigmaTreeBloom.png	EnigmaTreeBerry.png
+61	Micle Berry	Micle Berry	 Raises the accuracy of one move when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	MicleTreeTaller.png	MicleTreeBloom.png	MicleTreeBerry.png
+62	Custap Berry	Custap Berry	 Causes the holder to go first once when HP falls below 25%	AllTreeSeed.png	AllTreeSprout.png	CustapTreeTaller.png	CustapTreeBloom.png	CustapTreeBerry.png
+63	Jaboca Berry	Jaboca Berry	 Causes recoil on foe if holder is hit by a physical move	AllTreeSeed.png	AllTreeSprout.png	JabocaTreeTaller.png	JabocaTreeBloom.png	JabocaTreeBerry.png
+64	Rowap Berry	Rowap Berry	 Causes recoil on foe if holder is hit by a special move	AllTreeSeed.png	AllTreeSprout.png	RowapTreeTaller.png	RowapTreeBloom.png	RowapTreeBerry.png
