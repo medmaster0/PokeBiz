@@ -1,0 +1,125 @@
+1.badges
+mail
+pokeballs
+wiild encounters
+trainers
+customers
+NETWORKING
+statues/dolls
+trophies in trophy room view
+
+CUSTOMERS
+request a pokemon
+request a berry
+deliver mail
+fight someone for them? -> badges?
+emotion speach bubbles
+
+WILD ENCOUNTERS
+pick up pokeballs
+wild pokemon: if beat and have pokeball, capture
+if beat get exp and grow level
+
+COUNTERS
+sell pokemon to kitchen
+kitchen is gateway to multiplayer p2p economy
+sell pokemon to other players
+fullfill request
+send pokemon out as your own--->to scrolling pathways
+
+POKE_WHAT?
+--->gangster
+corp
+inc
+--->biz
+team(ster)
+capitalist
+contractor
+
+Player Battle
+Trainer sends pokemon to other player via network (P2P?)
+
+
+
+Trainer NPC battle
+Encounter Trainers and enter battle
+
+IF POKEMON FAINTS HE DIES
+or maybe you just need to reset him by clicking
+then when a P@P player wins, he gets other guys pokemon
+DONT LIKE THOSE LAST two LINES
+
+
+
+
+**CASUAL CLICKING**
+Something to keep player entertained.. 
+cut down trees
+poemon get tired and need refreshing
+healing?--->might ruin multiplayer P2P Battles
+blick on berries to eat
+
+
+????????
+POKEMON BATTLE CHAIN:
+send pokemon up to server in single file
+Pokemon battle one by one on server
+once one falls, next takes his place
+(the one who takes his place gets to go first so main one always gets hit)
+until other's chain is exhausted
+one winner left
+two chains to subscribe to: magma and aqua?
+real time pokemon battles on server!!!
+
+BATTLE SYSTEM (very simple)
+Pokemon's lvl is atk and hp
+Speed: Higher level higher the CHANCE that you go first
+Type advantage gives double the attack
+HP is recovered with berries?
+>>Each pokemon has fave berry
+>>fave berry recovers full HP
+>>fave berry is required to revive
+If pokemon wins he advances one level (or 3 if other pokemon is higher)
+>>Player's Pokemon start at lvl 5
+>>wild at level one
+
+Anyone can challenge anyones pokemon: 
+--->send someone a challenge: one pookemon to one pokemon
+--->Sends a copy of their pokemon
+--->when person recieves challenge they enter fight
+--->IF lose, pokemon faints
+--->If win, send faint signal to challenger
+--->when challenger logs in, his pokemon faints
+
+
+ALIGNE YOURSELF WITH A CERTAIN TEAM
+--->option to choose team (rocket, aqua, magma, etc) AND color
+--->"Customers will be team gang members
+--->you run into regular npcs and jump them and steal their secrets (mail)?
+
+
+TEAM UP AND EXPLLORE P2P
+--Connect via P2P to someone
+--One pokemon is yours, one is theirs following
+--pair of pokemon fights wild pokemon and leaders 
+--both players get copy of reward (incentive to team up)
+
+-- Breeding
+Encounter wild pokemon in wild (Heart above head)
+Then lay egg
+Egg hatches into new pokemon (50/50 chance on species)
+
+--Releasing
+When a pokemon is released into the wild
+an email, random post, IM, irc, something
+will be posted to the internet
+
+---------
+Interfaces/abstract data types for obstacles that are drawn on the main path
+--->trees to cut down(and other clickables form another interface), trainer, pokemon, 
+
+Clicable objects on main path:
+--->eaten-apple-looking trees use CUT
+--->pokeball item icons
+
+SCROLLING UP AND DOWN TO DIFFERENT POKEMON WORKERS
