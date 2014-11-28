@@ -1,6 +1,3 @@
---Wild Pokemon stuff
-pokeScore = {}
-for i=1, 400 do pokeScore[i] = 0 end
 
 --EGG STUFF
 local eggFile = io.open( "eggs/eggsID.txt" , "r")

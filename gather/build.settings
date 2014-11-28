@@ -32,10 +32,20 @@ settings = {
 	
 	--[[
 	-- Android permissions
-
+	
 	androidPermissions = {
   		"android.permission.INTERNET",
   	},
 
-	]]--
+  	]]--
+
+
+	android = 
+	{
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+		},
+	},
+
 }

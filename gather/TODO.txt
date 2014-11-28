@@ -39,23 +39,28 @@ contractor
 Player Battle
 Trainer sends pokemon to other player via network (P2P?)
 
-
-
 Trainer NPC battle
 Encounter Trainers and enter battle
+
+NPC Encounters:
+Your Team -- mission progression
+Rival Team -- fight (to the death) 
+Trainer -- steal pokemon & badge?
 
 IF POKEMON FAINTS HE DIES
 or maybe you just need to reset him by clicking
 then when a P@P player wins, he gets other guys pokemon
 DONT LIKE THOSE LAST two LINES
 
-
+Data:
+Player, Breeder (or WILD), Level, Battles won, 
+fave berry, 
 
 
 **CASUAL CLICKING**
 Something to keep player entertained.. 
 cut down trees
-poemon get tired and need refreshing
+pokemon get tired and need refreshing
 healing?--->might ruin multiplayer P2P Battles
 blick on berries to eat
 
@@ -113,13 +118,55 @@ Egg hatches into new pokemon (50/50 chance on species)
 When a pokemon is released into the wild
 an email, random post, IM, irc, something
 will be posted to the internet
+OR maybe releasing leads to battle chain
+
+--Sending pokemon
+data of level, breeder, and mail (message)
+will be sent wtih pokemon
+go to server, than to other person's phone
+
+
+--Changing other people's RIbbons
+*Mail, leave a message that gets sent
+or relayed through person sprite
+*trees, other person get's berries? change terrain
+*pokemon fight
+*pokemon trades?
+
+
+----------
+Draw Corrall tiles behind "score" pokemon
+Player walks down the aisle to all the pokemon stall
+across the hall is berries
+
 
 ---------
 Interfaces/abstract data types for obstacles that are drawn on the main path
 --->trees to cut down(and other clickables form another interface), trainer, pokemon, 
+
+function to only update the score text 
+(but not reset pokemon/trees/berries)
+
+Analyze all variables in memory to find that leak!!!
 
 Clicable objects on main path:
 --->eaten-apple-looking trees use CUT
 --->pokeball item icons
 
 SCROLLING UP AND DOWN TO DIFFERENT POKEMON WORKERS
+--> LONG PRESS!!!
+
+Heroku Random Message Generation
+
+Each cycle, random chance to generate either a:
+Pokemon, Berry, or Trainer
+
+Broadcast BATTLE MECHANISM
+Players send pokemon to online queue
+At set time increments, top of queue is broadcast out
+Everyone listening in challenges that pokemon
+first person to win sends signal to server?
+this triggers the next in the queue
+(while others are battling same defeated pokemon,
+they ignore any further broadcasted challenges)
+Maybe, just periodically broadcast a different poke
