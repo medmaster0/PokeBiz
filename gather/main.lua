@@ -737,12 +737,12 @@ end
 isNetworkViewOn = false
 local function networkButton(event)
 	
-	--DOn't do anything if network stuff is already on front
-	if (isNetworkViewOn==true) then 
-		return
-	else
-		isNetworkViewOn = true
-	end
+	-- --DOn't do anything if network stuff is already on front
+	-- if (isNetworkViewOn==true) then 
+	-- 	return
+	-- else
+	-- 	isNetworkViewOn = true
+	-- end
 
 	myRectangle:toFront()
 
@@ -802,13 +802,7 @@ local function networkButton(event)
 	end
 	print("sent")
 
-	--PREPARE TO SEND--
-	local headers = {}
-	local body = "player="..netName.."&team="..netTeam.."&id="..tostring(i).."&lvl=5"
-	local params = {}
-	params.headers = headers
-	params.body = body
-	network.request( "http://elephator.tk:8889/up", "POST", networkListener, params )
+
 end
 local function resetButton(event)
 	r1.instance1:removeSelf( )
