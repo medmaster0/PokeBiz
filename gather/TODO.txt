@@ -109,11 +109,6 @@ TEAM UP AND EXPLLORE P2P
 --pair of pokemon fights wild pokemon and leaders 
 --both players get copy of reward (incentive to team up)
 
--- Breeding
-Encounter wild pokemon in wild (Heart above head)
-Then lay egg
-Egg hatches into new pokemon (50/50 chance on species)
-
 --Releasing
 When a pokemon is released into the wild
 an email, random post, IM, irc, something
@@ -124,7 +119,12 @@ OR maybe releasing leads to battle chain
 data of level, breeder, and mail (message)
 will be sent wtih pokemon
 go to server, than to other person's phone
+star by poke
 
+--Sending player mail
+cook food for trainer
+send trainer to other player
+trainer has custome message
 
 --Changing other people's RIbbons
 *Mail, leave a message that gets sent
@@ -147,6 +147,10 @@ Interfaces/abstract data types for obstacles that are drawn on the main path
 function to only update the score text 
 (but not reset pokemon/trees/berries)
 
+when list pokemon, start at first one in score list?
+also, when first creating score file, automatically 
+add 10 random pokes
+
 Analyze all variables in memory to find that leak!!!
 
 Clicable objects on main path:
@@ -156,10 +160,20 @@ Clicable objects on main path:
 SCROLLING UP AND DOWN TO DIFFERENT POKEMON WORKERS
 --> LONG PRESS!!!
 
+bigger and different buttons
+new way to draw scores: use gba tiles
+-->no blank spots
+same idea on send screen
+-->no empty presses
+
 Heroku Random Message Generation
 
-Each cycle, random chance to generate either a:
-Pokemon, Berry, or Trainer
+Ideas for "pokeball views"
+>Send (already kind of have)
+>Send to War
+>Send to Wild
+>Cook
+
 
 Broadcast BATTLE MECHANISM
 Players send pokemon to online queue
@@ -170,3 +184,16 @@ this triggers the next in the queue
 (while others are battling same defeated pokemon,
 they ignore any further broadcasted challenges)
 Maybe, just periodically broadcast a different poke
+
+ALT, EVERy hour (set time interval) generate a pokewar
+doesnt even have to be time interval
+-->asynchonronously, every twenty pokemon received
+-->trigger a battle
+-->send specific link to battle (javascript) to player
+--> linked page will express if it needs to recieve more pokes
+emotion effects the battle
+
+Hardware Harvesters
+-->poke screens to plug into wall
+-->exclusive feature: choose which pokemon to harvest
+"send me an email, exchange paypal, etc etc"

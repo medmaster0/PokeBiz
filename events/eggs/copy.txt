@@ -1,0 +1,1609 @@
+Bulbasaur
+
+Bulbasaur
+
+5355
+
+A blue-green Egg with a light green top. It looks like it wants to be picked over the others.
+
+Charmander
+
+Charmander
+
+5355
+
+An orange Egg with a lighter front. It looks like it wants to be picked over the others.
+
+007.png
+
+Squirtle
+
+5355
+
+An Egg that looks like a shell with a light blue top. It looks like it wants to be picked over the others.
+
+Caterpie
+
+Caterpie
+
+2805
+
+A green Egg with yellow spots and rings. It feels sticky.
+
+Weedegg
+
+Weedle
+
+2805
+
+A yellow Egg with a red spot. It feels sticky.
+
+016
+
+Pidgey
+
+4080
+
+A brown Egg with cream markings. It's resting on feathers.
+
+019
+
+Rattata
+
+4080
+
+A purple Egg with cream marks. There's nothing special about it.
+
+021
+
+Spearow
+
+4080
+
+A brown and grey Egg with some red marks. It's resting on feathers.
+
+Ekans
+
+Ekans
+
+5355
+
+A purple Egg with a yellow front and band. Nothing goes near it.
+
+027
+
+Sandshrew
+
+5355
+
+A yellow Egg with cream marks. It's half buried.
+
+NidoranFemale
+
+NidoranÅä
+
+5355
+
+A light blue Egg with blue markings. Nothing goes near it. There's another like it.
+
+NidoranMale
+
+NidoranÅâ
+
+5355
+
+A purple Egg with green markings. Nothing goes near it. There's another like it.
+
+Vulpix
+
+Vulpix
+
+5355
+
+A burnt orange Egg that has several markings on the bottom. The ground is scorched near it.
+
+041
+
+Zubat
+
+4080
+
+A blue egg with purple marks that seems to like the dark. Nothing goes near it.
+
+Oddish
+
+Oddish
+
+5355
+
+An Egg that is half blue and half green. Plants are drawn to it.
+
+046
+
+Paras
+
+5355
+
+An orange Egg with red marks with yellow spots. It feels sticky.
+
+048
+
+Venonat
+
+5355
+
+A purple Egg that seems furred. Nothing goes near it.
+
+050
+
+Diglett
+
+5355
+
+A brown Egg with a red spot on it. It's half buried.
+
+052
+
+Meowth
+
+5355
+
+A cream Egg with black and red marks. It likes shiny things.
+
+054
+
+Psyduck
+
+5355
+
+A yellow Egg that looks like it has webbed feet. Water is drawn to it.
+
+056
+
+Mankey
+
+5355
+
+A tan Egg with light brown spots. It won't sit still.
+
+058
+
+Growlithe
+
+5355
+
+An orange Egg with light grey and yellow stripes on it. The ground is scorched near it.
+
+060
+
+Poliwag
+
+5355
+
+A blue Egg with a wavy grey mark on the bottom. Water is drawn to it.
+
+063
+
+Abra
+
+5355
+
+A yellow Egg with a brown mark on it. It seems to glow.
+
+066
+
+Machop
+
+5355
+
+A blue-grey Egg with a bronze top. It won't sit still.
+
+069
+
+Bellsprout
+
+5355
+
+A yellow, green, and brown Egg. Plants are drawn to it.
+072
+
+Tentacool
+
+5355
+
+A blue Egg with red marks on the sides. Water is drawn to it.
+Geodude
+
+Geodude
+
+4080
+
+An Egg that looks like a rock. It's in a pile of pebbles.
+
+Ponyta
+
+Ponyta
+
+5355
+
+A tan Egg surrounded in flames. The ground is scorched near it.
+
+079
+
+Slowpoke
+
+5355
+
+A pink Egg that seems oblivious. Water is drawn to it
+
+Magnemite
+
+Magnemite
+
+5355
+
+A grey Egg that attracts metal. Sparks jump from it.
+
+Farfetchd
+
+Farfetch'd
+
+5355
+
+A brown Egg that's holding something. It's resting on feathers.
+
+084
+
+Doduo
+
+5355
+
+A brown egg that seems like it should be two. It's resting on feathers.
+
+Seel
+
+Seel
+
+5355
+
+A white Egg with several marks on it. Water is drawn to it.
+
+Grimer
+
+Grimer
+
+5355
+
+A purple Egg that looks layered. Nothing goes near it.
+
+Shellderegg
+
+Shellder
+
+5355
+
+A purple Egg with a black line through the middle. Water is drawn to it.
+
+Gasegg
+
+Gastly
+
+5355
+
+A purple Egg with faded purple marks. It seems haunted.
+
+Onix
+
+Onix
+
+6630
+
+A grey Egg that looks like it has multiple parts. It's in a pile of pebbles.
+Drowzee
+
+Drowzee
+
+5355
+
+A yellow Egg with brown marks. It seems to glow.
+
+Krabby	
+Krabby
+
+5355
+
+An Egg that is half orange and half tan. Water is drawn to it.
+Voltorb
+
+Voltorb
+
+5355
+
+An Egg that is half red and half white. Sparks jump from it.
+
+Exeggcuteegg
+
+Exeggcute
+
+5355
+
+A peach Egg that is already cracked. Plants are drawn to it.
+
+Cubonegg
+
+Cubone
+
+5355
+
+A white Egg with brown marks on it. It looks like a skull.
+
+Lickitung
+
+Lickitung
+
+5355
+
+A pink Egg with yellow rings. It seems hungry.
+
+Koffing	
+Koffing
+
+5355
+
+A purple Egg surrounded in smog. Nothing goes near it.
+
+111
+
+Rhyhorn
+
+5355
+
+A grey Egg that has a horn-like mark on it. It's half buried.
+
+Tangelaegg
+
+Tangela
+
+5355
+
+A blue Egg that seems to be tangled vines. Plants are drawn to it.
+
+Kangaskan
+
+Kangaskhan
+
+5355
+
+A brown Egg with grey and cream marks. It seems very protective.
+
+Horsea
+
+Horsea
+
+5355
+
+A blue Egg with cream marks. Water is drawn to it.
+
+Goldeen
+
+Goldeen
+
+5355
+
+A white egg with golden marks on it. Water is drawn to it.
+
+Staryuegg
+
+Staryu
+
+5355
+
+A mostly gold egg with a red jewel on it. Water is drawn to it.
+
+Scyther
+
+Scyther
+
+6630
+
+A green Egg with cream marks. It feels sticky.
+
+Pinsir	
+Pinser
+
+6630
+
+A brown Egg with grey marks on top. It feels sticky.
+Tauros
+
+Tauros
+
+5355
+
+A brown Egg with dark brown and silver marks. There's nothing special about it.
+
+Magikegg
+
+Magikarp
+
+1530
+
+An orange Egg with white marks on it. Water is drawn to it.
+
+Lapras
+
+Lapras
+
+10455
+
+A blue Egg with a grey shell-like mark on it. Water is drawn to it.
+
+Ditto
+
+Ditto
+
+510
+
+A purple Egg that has strange shading. It tries to transform.
+
+Eevee
+
+Eevee
+
+9180
+
+A brown Egg with a cream top. It reacts to many things.
+
+Porygon
+
+Porygon
+
+5355
+
+A red and blue Egg. It seems man-made
+
+138
+
+Omanyte
+
+7905
+
+A tan Egg with a blue bottom. It looks like a fossil.
+
+Kabuto
+
+Kabuto
+
+7905
+
+A brown Egg with black and red marks. It looks like a fossil.
+
+Aerodactegg
+
+Aerodactyl
+
+7905
+
+A pale purple Egg with darker marks on it. It looks like a fossil.
+
+Articuno
+
+Articuno
+
+20,655
+
+A blue Egg with an ice crystal on it. Everything near it is covered in ice.
+Zapdos
+
+Zapdos
+
+20,655
+
+A yellow Egg with a lightning bolt on it. Static fills the air near it.
+Moltres
+
+Moltres
+
+20,655
+
+A orange Egg with flames on it. Everything close by is burned by it.
+Dratiniegg
+
+Dratini
+
+10455
+
+A blue Egg with grey marks on it. It seems fierce.
+
+Mewtwo
+
+Mewtwo
+
+30,855
+
+An Egg that was cloned from the DNA of another. It has a strong glow around it.
+
+Mew
+
+Mew
+
+510
+
+A pink Egg that seems pure. It has a strong glow around it.
+
+
+
+
+
+
+
+
+
+Chikoritegg
+
+Chikorita
+
+90
+
+A green Egg with a leaf on it. It looks like it wants to be picked over the others.
+
+155
+
+Cyndaquil
+
+5355
+
+A dark blue and cream Egg. It looks like it wants to be picked over the others.
+
+158
+
+Totodile
+
+5355
+
+A blue Egg with red and yellow marks. It looks like it wants to be picked over the others
+
+Sentret
+
+Sentret
+
+4080
+
+A light brown Egg with a cream circle and dark brown stripes. There's nothing special about it.
+
+Hootegg	
+Hoothoot
+
+4080
+
+A brown Egg with almost-black marks on it. It's resting on feathers.
+
+165	
+Ledyba
+
+4080
+
+A tan Egg with red and white marks. It feels sticky.
+167	
+Spinarak
+
+4080
+
+A green Egg with yellow and black marks on it. It feels sticky.
+
+170	
+Chinchou
+
+5355
+
+A blue Egg with two yellow marks on it. Sparks jump from it and water is drawn to it.
+Pichu
+
+Pichu
+
+2805
+
+A yellow Egg with a grey mark across it. Sparks jump from it.
+
+173
+
+Cleffa
+
+2805
+
+A pink Egg with a star on it. There's nothing special about it.
+
+Igglybuff
+
+Igglybuff
+
+2805
+
+A plain pink Egg with three marks on top. There's nothing special about it.
+
+Togiegg
+
+Togepi
+
+2805
+
+A white Egg with red and blue marks and a tan top. There's nothing special about it.
+
+Natu
+
+Natu
+
+5355
+
+A green Egg with red, yellow, and grey marks on it. It seems to glow.
+
+Mareep
+
+Mareep
+
+5355
+
+A yellow Egg with black stripes and a blue top. Sparks jump from it.
+
+187
+
+Hoppip
+
+5355
+
+A pink egg with a green top. Plants are drawn to it.
+
+190
+
+Aipom
+
+5355
+
+A purple Egg with tan marks. It likes pulling pranks.
+
+191
+
+Sunkern
+
+4324
+
+A yellow Egg with brown and green marks. Plants are drawn to it.
+
+193	
+Yanma
+
+5355
+
+A green Egg with a few red marks on it. It feels sticky.
+Wooper
+
+Wooper
+
+543
+
+A blue Egg with purple marks on it. Water is drawn to it.
+
+Murkrow	
+Murkrow
+432
+A dark blue Egg with a hat-like mark on it. It's more active at night.
+
+Misdreavegg
+
+Misdreavus
+432
+A blue Egg with purple designs and a red necklace on it. It seems haunted.
+
+Unownegg
+
+Unown
+
+10455
+
+A grey Egg that looks like a puzzle. It seems to glow.
+
+Girafegg
+
+Girafarig
+
+5355
+
+A yellow and brown Egg that has a white spot on top. It seems to glow.
+
+204	
+Pineco
+
+5355
+
+A teal Egg that is often mistaken for something else. It feels sticky.
+Dunsparce egg	
+Dunsparce
+
+5355
+
+A yellow Egg with a blue bottom and a blue ring around it. There's nothing special about it.
+
+Gligar	
+Gligar
+
+5355
+
+A purple Egg with blue marks on the side. It's half buried.
+Egg	
+Snubbull
+
+5355
+
+A pink Egg with a blue mark and two grey ones. There's nothing special about it.
+Quilfish	
+Qwilfish
+
+5355
+
+A blue and yellow Egg. Only water goes near it.
+213	
+Shuckle
+
+5355
+
+An orange and cream Egg with black spots on it. It's in a pile of pebbles.
+
+Heracross
+
+Heracross
+
+6630
+
+A blue Egg with strange marks on it. It's sticky and won't sit still.
+
+215
+
+Sneasel
+
+5355
+
+A dark blue Egg with pink and gold marks. It's more active at night.
+
+Teddiursa
+
+Teddiursa
+
+5355
+
+A brown Egg with a cream moon on a cloud mark. There's nothing special about it.
+
+Slugma
+
+Slugma
+
+6630
+
+A red Egg with two orange marks on it. The ground is scorched near it.
+
+Swinub
+
+Swinub
+
+5355
+
+A brown Egg with dark brown marks on it. There's frost on it.
+
+Corsolegg	
+Corsola
+432
+A pink Egg with white bubbly marks on it. Water is drawn to it.
+Remoraid	
+Remoraid
+
+5355
+
+A light blue Egg with dark blue stripes on it. Water is drawn to it.
+Delibird
+
+Delibird
+
+5355
+
+A red Egg with white marks on it. It's resting on feathers.
+
+Skarmory
+
+Skarmory
+
+6630
+
+An Egg that looks layered. It's resting on metallic feathers.
+
+Houndour
+
+Houndour
+
+5355
+
+A grey Egg with an orange spot on front. It's more active at night.
+
+231
+
+Phanphy
+
+5355
+
+A light blue egg with red marks on it. It's half buried.
+
+Stantlegg	
+Stantler
+
+5355
+
+A yellow Egg with a light brown diamond in the center. It seems to glow.
+235	
+Smeargle
+
+5355
+
+A brown-ish egg with two brown spots and a brown stripe. There's a green streak on the bottom.
+Tyrogue
+
+Tyrogue
+
+6630
+
+An Egg split between purple and red by a grey mark. It won't sit still.
+Smoochum	
+Smoochum
+432
+A pink Egg with two cream stripes on it. There's frost on it.
+Elekid	
+Elekid
+
+6630
+
+A yellow Egg with several black marks. Sparks jump from it.
+Magby	
+Magby
+432
+A red Egg with a yellow front and black stripe. The ground is scorched near it.
+
+241
+
+Miltank
+432
+A pink egg with a black mark with white marks on top. ThereÅfs nothing special about it.
+
+243	
+Raikou
+432
+An Egg that seems to hold the power of electricity. It seems to call lightning.
+244	
+Entei
+432
+An Egg that seems to hold the power of fire. It seems to call volcano eruptions.
+Suicunegg
+
+Suicune
+432
+An Egg that seems to hold the power of water. It seems to purify any water nearby.
+
+Larvitaregg
+
+Larvitar
+
+10455
+
+An olive green egg with black and red marks on it. It's in a pile of pebbles.
+
+249	
+Lugia
+
+30,855
+
+A white Egg with blue marks on it. It seems to be the balance between three others.
+250	
+Ho-Oh
+
+30,855
+
+An orange Egg with green and grey marks on it.Rainbows seem to end at this egg.
+251	
+Celebi
+
+30,855
+
+An Egg in shades of green. It seems to jump through time.
+
+
+
+
+Treeko	
+Treeko
+
+{C}5355
+
+A light green Egg with red and dark green marks on it. It looks like it wants to be picked over the others.
+Torchic	
+Torchic
+
+{C}5355
+
+A dark orange Egg with light orange marks. It looks like it wants to be picked over the others.
+Mudkipegg	
+Mudkip
+
+{C}5355
+
+A blue Egg with light blue and orange marks on it. It looks like it wants to be picked over the others.
+Poochyena
+
+Poochyena
+
+4080
+
+A grey Egg with black marks. It seems more active at night.
+
+Zigzagegg
+
+Zigzagoon
+
+4080
+
+A brown Egg with light brown zig-zag lines on it.
+
+265	
+Wurmple
+
+4080
+
+A pink Egg with cream marks. It feels sticky.
+270	
+Lotad
+321
+An Egg that is half blue and half green. Plants and water are drawn to it.
+273	
+Seedot
+
+4080
+
+A brown Egg with a grey top. Plants are drawn to it.
+Taillow	
+Taillow
+
+4080
+
+A white and dark blue Egg that has a red spot in the middle. It's resting on feathers.
+278	
+Wingull
+
+5355
+
+A white Egg with light blue marks. It's resting on feathers.
+Raltsegg	
+Ralts
+
+5355
+
+A green Egg with white along the bottom and two red spots. It seems to glow.
+283	
+Surskit
+432
+A light blue egg with a yellow top. Water is drawn to it.
+Shroomish	
+Shroomish
+
+4080
+
+A yellow Egg with green spots on it. Plants are drawn to it.
+Slakoth	
+Slakoth
+
+4080
+
+A light brown Egg with two curved brown marks. There's nothing special about it.
+290	
+Nincada
+543
+A white Egg with green and brown marks on it. It's half buried.
+293	
+Whismur
+321
+A pink Egg with light yellow marks on it. There's nothing special about it.
+296	
+Makuhita
+321
+A yellow Egg with a grey mark and two small circles. It won't sit still.
+Azurillegg
+
+Azurill
+
+2805
+
+A cute blue Egg with two light white spots. Water is drawn to it.
+
+299	
+Nosepass
+
+5355
+
+A blue Egg with a red spot near the bottom. It's in a pile of pebbles.
+Skitty	
+Skitty
+
+4080
+
+A cream Egg with pink around it. It seems playful.
+Sableyegg	
+Sableye
+
+6630
+
+A purple Egg with gemstones in it. It seems haunted.
+303	
+Mawile
+
+5355
+
+A grey Egg with a yellow splotch on it. It has a metallic gleam to it.
+Aron	
+Aron
+
+9180
+
+A silver and grey Egg that has two black spots. It has a metallic gleam to it.
+307	
+Meditite
+
+5355
+
+A light grey Egg with a blue band and two blue spots on it. It seems to glow.
+Electrikegg	
+Electrike
+432
+A green Egg with a yellow stripe on it. Sparks jump from it.
+Plusle	
+Plusle
+
+5355
+
+A yellow Egg with pink marks. Sparks jump from it. There's another like it.
+Minunegg	
+Minun
+
+5355
+
+A yellow Egg with blue marks. Sparks jump from it. There's another like it.
+313	
+Volbeat
+
+4080
+
+A pale purple Egg with yellow stripes on it. It feels sticky. There's another like it.
+314	
+Illumise
+
+4080
+
+A pale blue Egg with dark blue and yellow stripes on it. It feels sticky. There's another like it
+Gulpinegg	
+Gulpin
+
+5355
+
+A green Egg with a grey diamond on it. Nothing goes near it.
+318	
+Carvanha
+
+5355
+
+An Egg that is half blue and half red with yellow marks. Water is drawn to it.
+320	
+Wailmer
+
+10455
+
+A blue Egg with a tan front. Water is drawn to it.
+Numel	
+Numel
+321
+A yellow Egg with cream markings and a green top. The ground is scorched near it.
+Torkoal	
+Torkoal
+321
+A burnt orange Egg with a grey bottom. The ground is scorched near it.
+Spoinkegg	
+Spoink
+
+5355
+
+A pearl-like Egg with a grey bottom. It seems to glow.
+327	
+Spinda
+
+4080
+
+A tan Egg with a red mark on the bottom. It seems off balance.
+328	
+Trapinch
+321
+An orange Egg with a white spot on front with a grey line through it. It's half buried.
+Cacnea	
+Cacnea
+
+5355
+
+A green Egg with a yellow top and dark green diamonds on it. Plants are drawn to it.
+Swablu	
+Swablu
+
+5355
+
+A light blue Egg with clouds on it. It's resting on feathers.
+Zangoose	
+Zangoose
+
+5355
+
+A white egg with red marks. It has a feud with another.
+Seviper	
+Seviper
+
+5355
+
+A blue-grey Egg with a red mark on it. It has a feud with another.
+337	
+Lunatone
+
+6630
+
+A yellow Egg that seems to have craters. It seems to glow.
+338	
+Solrock
+432
+An orange Egg with yellow marks on it. It seems to glow.
+339	
+Barboach
+
+5355
+
+A light grey Egg with dark grey and blue marks on it. Water is drawn to it.
+341	
+Corpish
+321
+An orange Egg with tan marks on it. Water is drawn to it.
+343	
+Baltoy
+321
+A brown Egg with red marks. It seems to glow.
+Lileepegg	
+Lileep
+
+7905
+
+A purple Egg with yellow stripes and pink marks. It looks like a fossil.
+347	
+Anorith
+
+7905
+
+A green Egg with grey, white, and red marks. It looks like a fossil.
+Feebasegg	
+Feebas
+
+5355
+
+A brown Egg with dark brown and blue spots. Water is drawn to it.
+Castformegg	
+Castform
+
+6630
+
+A grey Egg with a white mask-like mark. It seems to change with the weather.
+Keclegg	
+Kecleon
+
+5355
+
+A green Egg with yellow marks. It seems to turn invisible and block paths.
+353	
+Shuppet
+
+6630
+
+A dark purple Egg that seems wrinkled. It seems haunted.
+Duskull	
+Duskull
+
+6630
+
+A dark grey Egg with two bones on it. It seems haunted.
+Tropiusegg	
+Tropius
+321
+A brown Egg with green and two yellow marks on it. It's resting on leaves.
+Absol	
+Absol
+
+6630
+
+A light and dark grey Egg. It seems to react to disasters.
+Wynaut	
+Wynaut
+
+5355
+
+A blue Egg with a grey mark that has two white spots on it. It seems to glow.
+361	
+Snorunt
+
+5355
+
+A grey Egg with a yellow and red mark on it. There's frost on it.
+Sphealegg	
+Spheal
+321
+A light blue Egg with a cream front and lighter blue spots. Water is drawn to it.
+366	
+Clamperl
+321
+A pink Egg with blue around it. Water is drawn to it.
+369	
+Relicanth
+321
+A dark brown Egg with lighter brown and red spots. Water is drawn to it.
+370	
+Luvdisc
+321
+A pink Egg with two white spots. Water is drawn to it.
+371	
+Bagon
+
+10455
+
+A blue Egg with grey on top and yellow on bottom. It seems fierce.
+Beldumegg
+
+Beldum
+
+10455
+
+A light blue egg with a hole already in it. It seems to glow.
+
+Regirockegg	
+Regirock
+321
+An old Egg that seems like it was locked away. It controls rocks.
+378	
+Regiice
+321
+An old Egg that seems like it was locked away. It controls ice.
+379	
+Registeel
+321
+An old Egg that seems like it was locked away. It controls steel.
+380	
+Latias
+
+30855
+
+A white Egg with a red bottom and triangle. It is said to have a brother.
+381	
+Latios
+
+30855
+
+A grey Egg with a blue bottom and triangle. It is said to have a sister.
+382	
+Kyogre
+
+30855
+
+A blue Egg with a red glowing mark. It seems to make more water.
+383	
+Groudon
+
+30855
+
+A red Egg with black glowing marks. It seems to make more land.
+384	
+Rayquaza
+
+30855
+
+A green Egg with yellow glowing marks. It seems to dislike the ground.
+385	
+Jirachi
+
+30855
+
+A white egg with yellow and blue marks. It grants wishes every so often.
+Deoxysegg	
+
+Deoxys
+30855
+
+A red Egg with light blue marks and a dark blue stone on it. It came from space.
+
+
+Turtwig	
+Turtwig
+
+5355
+
+A brown Egg with a green bottom and marks. It looks like it wants to be picked over the others.
+
+Chimchar	
+Chimchar
+
+5355
+
+An orange Egg with skin colored marks. It looks like it wants to be picked over the others.
+Piplupegg	
+Piplup
+
+5355
+
+A light blue Egg with dark blue and white marks. It looks like it wants to be picked over the others.
+396	
+Starly
+
+4080
+
+A brown-grey Egg with grey and white marks. It's resting on feathers.
+399	
+Bidoof
+432
+A brown Egg with tan marks. It seems oblivious.
+401	
+Kricketot
+432
+A brown-ish red Egg with tan and light brown marks. It feels sticky.
+Shinx	
+Shinx
+
+5355
+
+A light blue Egg that seems to be wearing a suit. Sparks jump from it.
+406	
+Budew
+432
+A green Egg with a yellow spot. Plants are drawn to it.
+408	
+Cranidos
+
+7905
+
+A grey Egg with a blue and grey top. It looks like a fossil.
+410	
+Shieldon
+
+7905
+
+A yellow Egg with a grey mark. It looks like a fossil.
+
+Burmytrashegg
+
+Burmy
+
+4080
+
+A dark grey Egg covered in leaves. There are others like it.
+
+
+Combee	
+Combee
+
+4590
+
+A yellow Egg broken into three segments. It feels sticky.
+Pachirisu	
+Pachirisu
+
+2805
+
+A white Egg with blue marks on it, Sparks jump from it.
+Buizel	
+Buizel
+
+5355
+
+An orange Egg with a curved yellow mark and two cream ones. Water is drawn to it.
+Cherubegg	
+Cherubi
+
+5,355
+
+A purple Egg with a dark purple streak on top. Plants are drawn to it.
+
+Shellosegg
+
+Shellos 
+
+5355
+
+A blue and green Egg with a yellow stripe through the middle. There's another like it.
+
+425	
+Drifloon
+432
+A purple Egg with a yellow X on it. It seems haunted.
+Bunearyegg	
+Buneary
+
+5355
+
+A brown Egg with lighter brown marks on it. There's nothing special about it.
+Glameow	
+Glameow
+
+5355
+
+A blue Egg with white and pink marks. It seems to be purring.
+433	
+Chingling
+
+6630
+
+A yellow Egg with a red and white top. It seems to glow.
+434	
+Stunky
+
+5355
+
+A dark purple Egg with a light brown streak through it. Nothing goes near it.
+436	
+Bronzor
+432
+A dark blue Egg that seems metallic. It seems to glow.
+Bonsly	
+Bonsly
+432
+A brown Egg with three green spots on it. It seems deceiving.
+Mime Jr.	
+Mime Jr.
+
+6630
+
+A pink Egg with a blue top and bottom. It has a red spot on it. It seems to glow.
+Happiny	
+Happiny
+
+10455
+
+A pink Egg with an egg mark on it. There's nothing special about it.
+
+441	
+Chatot
+
+5355
+
+A colorful Egg with splotches of grey, blue, green, yellow, and white.
+Spiritomb	
+Spiritomb
+
+7905
+
+A purple Egg with green marks that seem to come from an Odd Keystone.
+Gible	
+Gible
+432
+A blue Egg with a burnt orange mark and light blue marks. It seems fierce.
+Munchlaxegg
+
+Munchlax
+
+10455
+
+A dull blue Egg with a cream bottom. It always seems hungry.
+
+Riolu
+
+Riolu
+
+6630
+
+A blue Egg with a grey mark around it. It won't sit still.
+
+449	
+Hippopotas
+
+7905
+
+A light brown Egg with dark brown splotches on it. It's half buried.
+Skorupiegg	
+Skorupi
+
+5355
+
+A purple Egg with lighter and darker stripes on it. Nothing goes near it.
+Croagunkegg	
+Croagunk
+
+2805
+
+A blue Egg with white, grey, and red marks on it. It won't sit still.
+455	
+Carnivine
+432
+A dark green Egg with yellow, red, and lighter green marks. Plants are drawn to it
+Fineonegg	
+Finneon
+432
+A light blue Egg with a dark blue top and purple marks. Water is drawn to it.
+Mantyke	
+Mantyke
+432
+A blue Egg with a large light blue spot on the front. Water is drawn to it.
+
+Snoveregg	
+Snover
+
+5355
+
+A white Egg with green and brown spots on it. There's frost on it.
+Rotomegg	
+Rotom
+
+5355
+
+An orange Egg with electric marks on it. It seems haunted.
+480	
+Uxie
+
+20655
+
+This Egg seems to give people the ability to feel problems.It's part of a trio.
+
+481	
+Mesprit
+432
+This Egg seems to give people the ability to feel emotions.It's part of a trio.
+482	
+Azelf
+432
+This Egg seem to give people the ability to do things.It's part of a trio.
+483	
+Dialga
+432
+A grey Egg with a blue gem on it.It seem to control time.
+484	
+Palkia
+
+30855
+
+A light peach Egg with a pearl gem on it. It seems to control space.
+485	
+Heatran
+432
+A brown Egg with orange and grey spots. It seems to melt itself a little.
+Regigigas	
+Regigigas	
+7657
+An old Egg that seems like it was locked away. It controls the other three.
+Giratina	
+Giratina
+432
+A grey, yellow, and red Egg that seems to control its own dimension.
+Cresselia	
+Cresselia
+432
+A yellow, blue, and purple Egg that seems to give off good dreams to those near it.
+Phionegg	
+Phione
+
+10455
+
+A light blue Egg with dark blue spots in it. It seems to drift on water.
+490	
+Manaphy
+543
+A blue Egg with a red spot in it. It seems really attached to the sea for some reason.
+Darkraiegg	
+Darkrai
+432
+A dark blue Egg with a white top and a red mark around it. It seems to give off nightmares.
+492	
+Shaymin
+432
+An Egg that is half white and half green. It seems peaceful and in-tune with nature.
+493	
+Arceus
+432
+A grey Egg that seem to have a little of everything mixed in.It seem to rule over the others. Rem

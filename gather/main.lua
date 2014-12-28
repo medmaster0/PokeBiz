@@ -47,9 +47,11 @@ for _ in pairs(berries) do berrycount = berrycount + 1 end
 berryScore = {}
 for i=1, berrycount do berryScore[i] = 0 end
 
---Wild Pokemon stuff
+--WILD POKEMON STUFF
 pokeScore = {}
 for i=1, 400 do pokeScore[i] = 0 end
+--TODO: Load name list, pNameList.txt
+
 
 --EGG STUFF
 --opne up the mapping from pokemon to eggs
@@ -75,6 +77,16 @@ for i = 1, 209 do
 end
 io.close(eggFile)
 
+--TYPE STUFF
+--TODO load poke type list: pTypesEncoded.txt
+--TODO load poke type behavior: pTypeBehavior.txt
+
+--FOOD STUFF
+--TODO load poke food list: pFoodCode.txt
+
+
+
+
 --START WAY TO LOAD DATA
 --Berry File 
 local p = system.pathForFile( "inv.txt",system.DocumentsDirectory )
@@ -92,7 +104,9 @@ if(f ~= nil) then
 end
 f = nil
 -- Poke File
+firstP = 0--index of first nonzero pokemon score
 local p = system.pathForFile( "invP.txt",system.DocumentsDirectory )
+--local p = system.pathForFile( "invP.txt",system.ResourceDirectory )
 local f = io.open(p, "r")
 if(f ~= nil) then
 	io.input(f)
@@ -102,15 +116,24 @@ if(f ~= nil) then
 		local quant
 		_, _, ID, quant = string.find(string, "poke(%d+)quant(%d+)")
 		pokeScore[tonumber(ID)] = tonumber(quant)
+
+		--If it's the first nonzero score, register it
+		if (firstP == 0)and(tonumber(quant)~=0) then
+			firstP = i
+		end
+
 	end
 	io.close(f)
 end
 f = nil
 
+--if firstP still isn't set ( == 0), then set it
+if (firstP == 0) then firstP = 1 end
+
 --START WAY TO SAVE DATA
 --SAVE COUNT GLOBALS
 saveCount = 0 --keeps ttrack of how many times we we've saved
-local function saveDataArray(typeCode, berryArray, pokeArray)
+function saveDataArray(typeCode, berryArray, pokeArray)
 	if (saveCount ~= 3) then --counts until array is actually saved
 		saveCount = saveCount + 1
 		return
@@ -163,7 +186,7 @@ fences = {} --fence rectangles
 iconOffset = 16 --will keep the scores from resetting position each time this is run
                --used in button functions
 bCursor = 1 -- points to the current element in berry score array
-pCursor = 1 -- points to the current element in poke score array
+pCursor = firstP -- points to the current element in poke score array
 d = 1 --display counter: keeps track of number of displayed icons on screen
 iconLimit = 6 -- determines how many icons to display at once (per column)
 colorSheet = graphics.newImageSheet( "backs/color.png" , {width=16, height=16, numFrames=880} )
@@ -184,6 +207,8 @@ end
 local function newScore()
 	myRectangle:toFront( )
 	yourRectangle:toFront( )
+	--turn off the network view
+	if isNetworkViewOn == true then isNetworkViewOn = false end
 
 	if(nameField~=nil)then nameField:removeSelf( ); nameField = nil end
 	if(teamField~=nil)then teamField:removeSelf( ); teamField = nil end
@@ -283,7 +308,7 @@ local function newScore()
 	for i=pCursor, 400 do 
 		while(d<iconLimit) do
 			local checkScore = i + (d-1) --the id in the score array we are checking
-			if(pokeScore[checkScore]~=0 and pokeScore[checkScore]~=nil)then
+			if(pokeScore[checkScore]~=0)then
 				if(iconsP[d] ~= nil) then iconsP[d]:removeSelf( ) end 
 				if(sheetsP[d] ~= nil) then sheetsP[d] = nil end
 				sheetsP[d] = graphics.newImageSheet("allcombo/" .. tostring(checkScore) .. "combo.png", {width=32,height=32,numFrames=8})
@@ -368,6 +393,8 @@ local Ribbon = {
 	--HACKS AND SHIT
 	notBerry = true, --used to tell if we are moving berry or not
 	isPaused = false, --if the ribbon is paused or not
+	isNPCnotP = true, --if an NPC is being moved (as opposed to a poke being moved)
+	hasMail = false, --if the Ribbon has some mail to deliver
 	eventRunning = false, -- if an event is running
 	eventRectangle = nil, --rectangle that is used for event animation
 	eventTimer = 0, --timer to check if event is done
@@ -432,8 +459,8 @@ function Ribbon:setup()
 	self.berry = display.newImage("berry/" ..name.. ".png")
 	self.berry.x = _W + 60
 	self.berry.y = self.backstamps[1].y
-	self.berry.xScale = 0.625
-	self.berry.yScale = 0.625
+	self.berry.xScale = 0.625/1.5
+	self.berry.yScale = 0.625/1.5
 
 	--Make the Event rectangle
 	local x =self.instance1.x + ((self.instance1.width*self.instance1.xScale)/2)
@@ -547,17 +574,69 @@ function encounterWild(self,event)
 			self.isPaused = true
 			self.eventRunning = true
 			--update the xpos of the event rect and move to front
-			self.eventRectangle.x =self.instance1.x + ((self.instance1.width*self.instance1.xScale)/2)
-			self.eventRectangle:toFront( )
-			self.eventRectangle:setFillColor( 1,0.2,0.8 )
-			self.eventSheet = graphics.newImageSheet( "events/heart.png", {width=32, height = 32, numFrames=8})
-			self.eventInstance = display.newSprite(self.eventSheet, {name="event", start = 1, count = 8, time=500})
+			-- self.eventRectangle.x =self.instance1.x + ((self.instance1.width*self.instance1.xScale)/2)
+			-- self.eventRectangle:toFront( )
+			-- self.eventRectangle:setFillColor( 1,0.2,0.8 )
+			if (self.eventInstance ~= nil) then self.eventInstance:removeSelf( ); self.eventInstance = nil end
+			self.eventSheet = graphics.newImageSheet( "events/heartRip.png", {width=32, height = 32, numFrames=5})
+			self.eventInstance = display.newSprite(self.eventSheet, {name="event", start = 1, count = 5, time=500})
 			self.eventInstance.x = self.eventRectangle.x
 			self.eventInstance.y = self.eventRectangle.y
 			self.eventInstance.yScale = 1.25
 			self.eventInstance.xScale = 1.25			
 			self.eventInstance:play( )
 			self.eventTimer = system.getTimer( )
+			self.eventSheet = nil
+			return
+		end
+		if (self.emoteID == 2) then
+			self.isPaused = true
+			self.eventRunning = true
+
+			if (self.eventInstance ~= nil) then self.eventInstance:removeSelf( ); self.eventInstance = nil end
+			self.eventSheet = graphics.newImageSheet( "events/normal2.png", {width=32, height = 32, numFrames=5})
+			self.eventInstance = display.newSprite(self.eventSheet, {name="event", start = 1, count = 5, time=500})
+			self.eventInstance.x = self.eventRectangle.x
+			self.eventInstance.y = self.eventRectangle.y
+			self.eventInstance.yScale = 1.25
+			self.eventInstance.xScale = 1.25			
+			self.eventInstance:play( )
+			self.eventTimer = system.getTimer( )
+			self.eventSheet = nil
+			return
+		end
+		if (self.emoteID == 3) then
+			--If emoteID is 3 (currently: singing), change wild emote and give instance 1 an emote (the event sheet)
+			self.isPaused = true
+			self.eventRunning = true
+
+			if(self.eventInstance ~= nil) then self.eventInstance:removeSelf( ); self.eventInstance = nil end
+			--Give instance 1 an emote
+			self.eventSheet = graphics.newImageSheet( "emotion/4.png", {width = 16, height = 16, numFrames = 2} )
+			self.eventInstance = display.newSprite( self.eventSheet, {name="event", start=1, count=2, time=500})
+			self.eventInstance.x = self.instance1.x
+			self.eventInstance.y = self.instance1.y - (self.instance1.yScale*self.instance1.height)/1.5
+			--The scale will be just a tad smaller than the ratio ;P
+			self.eventInstance.xScale = 2
+			self.eventInstance.yScale = 2
+			self.eventInstance:play()
+
+			--Change the event of instance 2
+			if self.instanceE ~= nil then self.instanceE:removeSelf(); self.instanceE = nil end
+			self.sheetE = nil
+			self.sheetE = graphics.newImageSheet( "emotion/5.png", {width=16, height = 16, numFrames=2})
+			self.instanceE = display.newSprite(self.sheetE, {name="emote", start = 1, count = 2, time=500})
+			self.instanceE.x = self.instance2.x
+			self.instanceE.y = self.instance2.y - (self.instance2.yScale*self.instance2.height)/1.5
+			--The scale we be just a tad smaller than the ratio ;p
+			self.instanceE.xScale = 2 
+			self.instanceE.yScale = 2
+			self.instanceE:play( )
+			self.sheetE = nil
+
+			--House keeping
+			self.eventTimer = system.getTimer( )
+			self.eventSheet = nil
 			return
 		end
 	end
@@ -572,11 +651,13 @@ function encounterWild(self,event)
 	self.instanceE= nil
 	self.sheetE = nil
 	self.notBerry = false --flag to start berry run
+	print("this happens... probably doesn't")
 	--add to score GLOBAL VARIABLE
-	pokeScore[self.wildID] = pokeScore[self.wildID] + 1
-	saveDataArray(2, berryScore, pokeScore)
+	--pokeScore[self.wildID] = pokeScore[self.wildID] + 1
+	--saveDataArray(2, berryScore, pokeScore)
 end
 function Ribbon:checkDone(event)
+	--Concerning Pokemon Events? (or both?)
 	--If the time is a certain amount after when the even started
 	if((event.time - self.eventTimer)>math.random(5000,10000))then 
 		--Remove All traces of pokemon and enter score
@@ -586,7 +667,6 @@ function Ribbon:checkDone(event)
 		self.instanceE:removeSelf( )
 		self.instanceE= nil
 		self.sheetE = nil
-		self.notBerry = false --flag to start berry run
 		if(self.emoteID == 1)then --If heart event
 			--make room for new egg
 			if(self.instanceBorn~=nil)then self.instanceBorn:removeSelf();self.instanceBorn = nil end
@@ -624,6 +704,18 @@ function Ribbon:checkDone(event)
 				--self.hatch:play()
 			end
 		end
+		if (self.emoteID == 3) then --if singing/friend event
+			--Add the pokemon to score
+			pokeScore[self.wildID] = pokeScore[self.wildID] + 1
+			saveDataArray(2, berryScore, pokeScore)
+		end
+
+		--decide whether to prompt an NPC or a wild poke
+		if (math.random()>0.7) then self.isNPCnotP = true else self.isNPCnotP = false end
+
+		--decide whether to propmt a berry run
+		if math.random()>0.5 then self.notBerry = false end
+
 		self.eventRunning = false
 		self.isPaused = false
 		self.eventRectangle:toBack( )
@@ -639,6 +731,7 @@ function Ribbon:hatchEgg(event)
 
 	-- New Pokemon
 	local i = egg2poke[self.eggID]
+	print("bug value " .. tostring(self.eggID))
 	pokeScore[i] = pokeScore[i] + 1
 	self.sheetBorn = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
 	self.instanceBorn = display.newSprite(self.sheetBorn, {name="pokeB", start=1, count = 2, time=250})
@@ -649,6 +742,152 @@ function Ribbon:hatchEgg(event)
 	self.instanceBorn:play()
 
 end
+function Ribbon:moveAndMakeNPC(event)
+	if (self.npc == nil) then
+		--NPC
+		i = math.random( 90 )
+		self.npc = display.newImage( "trainers/"..i..".png" )
+		self.npc.x = _W + 60
+		self.npc.y = self.backstamps[1].y
+		self.npc.xScale = 1.25
+		self.npc.yScale = 1.25
+		--NPC speech emote
+		self.sheetNE = nil
+		self.sheetNE = graphics.newImageSheet( "emotion/12.png", {width=16,height=16, numFrames=2} )
+		if(self.instanceNE ~= nil)then self.instanceNE:removeSelf( ); self.instanceNE = nil end
+		self.instanceNE = display.newSprite(self.sheetNE, {name="emote", start = 1, count = 2, time=500})
+		self.instanceNE.x = self.npc.x
+		self.instanceNE.y = self.npc.y - (self.npc.yScale*self.npc.height)
+		--The scale will be just a tad smaller than the raio ::P
+		self.instanceNE.xScale =2
+		self.instanceNE.yScale =2
+		self.instanceNE:play()
+		self.sheetNE = nil
+	end
+
+	--Actually Move
+	self.tDelta = event.time - self.tPrevious
+	self.tPrevious = event.time
+	self.xOffset = ( 0.02 * self.tDelta)
+	self.npc.x = self.npc.x - self.xOffset
+	self.instanceNE.x = self.npc.x
+
+	if self.npc.x < self.instance1.x + 40 then --if wild poke reach pokemon
+		encounterNPC(self, event)
+	end
+
+	self.tPrevious = system.getTimer( )
+end
+function encounterNPC(self, event)
+
+	--start an event running if it needs to...
+	if(self.eventRunning == false ) then 
+		self.isPaused = true
+		self.eventRunning = true
+		if (self.eventInstance ~= nil) then self.eventInstance:removeSelf( ); self.eventInstance = nil end
+
+		if(self.hasMail == false) then -- if doesnt have mail, give it some
+			--Give instance 1 a question emote
+			self.eventSheet = graphics.newImageSheet( "emotion/13.png", {width = 16, height = 16, numFrames = 2} )
+			self.eventInstance = display.newSprite( self.eventSheet, {name="event", start=1, count=2, time=500})
+			self.eventInstance.x = self.instance1.x
+			self.eventInstance.y = self.instance1.y - (self.instance1.yScale*self.instance1.height)/1.5
+			--The scale will be just a tad smaller than the ratio ;P
+			self.eventInstance.xScale = 2
+			self.eventInstance.yScale = 2
+			self.eventInstance:play()
+
+			--Change the event emotion of npc, to "concerned"
+			if self.instanceNE ~= nil then self.instanceNE:removeSelf(); self.instanceNE = nil end
+			self.sheetNE = nil
+			self.sheetNE = graphics.newImageSheet( "emotion/6.png", {width=16, height = 16, numFrames=2})
+			self.instanceNE = display.newSprite(self.sheetNE, {name="emote", start = 1, count = 2, time=500})
+			self.instanceNE.x = self.npc.x
+			self.instanceNE.y = self.npc.y - (self.npc.yScale*self.npc.height)
+			--The scale we be just a tad smaller than the ratio ;p
+			self.instanceNE.xScale = 2 
+			self.instanceNE.yScale = 2
+			self.instanceNE:play( )
+			self.sheetNE = nil
+		end
+
+		if(self.hasMail == true )then --if have mail, deliver it! :)
+			--Give instance 1 a talking emote
+			self.eventSheet = graphics.newImageSheet( "emotion/12.png", {width = 16, height = 16, numFrames = 2} )
+			self.eventInstance = display.newSprite( self.eventSheet, {name="event", start=1, count=2, time=500})
+			self.eventInstance.x = self.instance1.x
+			self.eventInstance.y = self.instance1.y - (self.instance1.yScale*self.instance1.height)/1.5
+			--The scale will be just a tad smaller than the ratio ;P
+			self.eventInstance.xScale = 2
+			self.eventInstance.yScale = 2
+			self.eventInstance:play()
+
+			--Change the event emotion of npc, to "happy"
+			if self.instanceNE ~= nil then self.instanceNE:removeSelf(); self.instanceNE = nil end
+			self.sheetNE = nil
+			self.sheetNE = graphics.newImageSheet( "emotion/4.png", {width=16, height = 16, numFrames=2})
+			self.instanceNE = display.newSprite(self.sheetNE, {name="emote", start = 1, count = 2, time=500})
+			self.instanceNE.x = self.npc.x
+			self.instanceNE.y = self.npc.y - (self.npc.yScale*self.npc.height)
+			--The scale we be just a tad smaller than the ratio ;p
+			self.instanceNE.xScale = 2 
+			self.instanceNE.yScale = 2
+			self.instanceNE:play( )
+			self.sheetNE = nil
+		end
+
+		--House keeping
+		self.eventTimer = system.getTimer( )
+		self.eventSheet = nil
+		return
+	end
+end
+function Ribbon:checkDoneNPC(event)
+	--Conecerning NPC events
+	-- if the time is a certain amount after when the event started
+	if((event.time - self.eventTimer)>math.random(5000,10000))then
+		
+		if(self.hasMail == false) then --if not have mail, give it some
+			print("happened")
+			--make room for mail
+			if(self.badgeInstance~=nil)then self.badgeInstance:removeSelf( );self.badgeInstance = nil end
+			--make the mail if need be
+			if(self.mail==nil)then 
+				local i = math.random( 0,23 )
+				self.mail = display.newImage( "close/".. tostring( i )..".png")
+				self.mail.x = (_W/2) - (self.instance1.width*self.instance1.xScale)
+				self.mail.y = self.backstamps2[1].y
+				self.mail.xScale = 0.625
+				self.mail.yScale = 0.625
+			end
+
+			self.hasMail = true
+		elseif(self.hasMail == true) then --if have mail, remove all traces of mail
+			self.hasMail = false
+			self.mail:removeSelf( )
+			self.mail = nil
+		end
+		--Remove ALL traces of NPC=
+		self.npc:removeSelf( )
+		self.npc = nil
+		self.instanceNE:removeSelf( )
+		self.instanceNE= nil
+		self.sheetNE = nil
+
+		--decide whether to prompt an NPC or a wild poke
+		if (math.random()>0.75) then self.isNPCnotP = true else self.isNPCnotP = false end
+
+		--decide whether to prompt a berry or not
+		if (math.random()>0.5) then self.notBerry = false end --flag to start berry run
+
+		self.eventRunning = false
+		self.isPaused = false
+		self.eventRectangle:toBack( )
+		self.eventInstance:toBack()
+		self.tPrevious = system.getTimer( ) --Reset the timer
+	end
+end
+
 --END OF RIBBON DEFINE
 
 r1 = Ribbon:new{ypos =1}
@@ -667,7 +906,6 @@ newScore()
 --Function to handle button
 downTimer = 0 --timer to prevent rapid button press 
 local function handleDownButtonEvent(event)
-
 	--Return and do nothing if enough time hasn't passed
 	if (event.time - downTimer) < 100 then
 		return 
@@ -682,7 +920,6 @@ local function handleDownButtonEvent(event)
 end
 upTimer = 0 --timer to prevent rapid button press
 local function handleUpButtonEvent(event)
-
 	--Return and do nothing if enought time hasn't passed
 	if (event.time - upTimer) < 100 then
 		return
@@ -696,8 +933,8 @@ local function handleUpButtonEvent(event)
 	upTimer = event.time --reset the timer
 end
 --NETWORK BUTTON STUFF
-netName = "medmaster0" --the user's network name
-netTeam = "Rocket" -- the user's network team name
+netName = "Silver" --the user's network name DEFAULT
+netTeam = "Rocket" -- the user's network team name DEFAULT
 netBerries = 0 --the amount of berries to send over the network
 --Listeners for text boxes
 local function nameTextListener(event)
@@ -705,7 +942,8 @@ local function nameTextListener(event)
 		print(event.text)
 	elseif(event.phase=="ended" or event.phase=="submitted")then
 		print("Submitted Text: " .. event.target.text)
-		netName = event.target.text
+		local holder = event.target.text
+		netName = holder
 	elseif(event.phase=="editing")then
 		print(event.newCharacters)
 		print(event.oldText)
@@ -718,7 +956,8 @@ local function teamTextListener(event)
 		print(event.text)
 	elseif(event.phase=="ended" or event.phase=="submitted")then
 		print("Submitted Text: " .. event.target.text)
-		netTeam = event.target.text
+		local holder = event.target.text
+		netTeam = holder
 	elseif(event.phase=="editing")then
 		print(event.newCharacters)
 		print(event.oldText)
@@ -734,20 +973,57 @@ local function networkListener(event)
 		print("Response"..event.response)
 	end
 end
+isSendButtonOn = false
+sendEmoteId = 1
+local function sendPokemonHTTP(event)
+
+	--Do nothing if button is not enabled
+	if isSendButtonOn == false then return end
+
+	--PREPARE TO SEND--
+	print("sent")
+	local headers = {}
+	--NOTE: variables i and sendEmoteID are globals set in "networkButton" function
+	if sendEmote ~= nil then 
+		local body = "player="..netName.."&team="..netTeam.."&id="..tostring(i).."&emote="..tostring(sendEmoteId).."&lvl=5"
+		local params = {} 
+		params.headers = headers
+		params.body = body
+		network.request( "http://elephator.tk:8889/up", "POST", networkListener, params )
+		
+		pokeScore[i] = pokeScore[i] - 1 
+		--after done sending, need to close window
+		newScore()
+		isSendButtonOn = false --turn off
+	end
+
+end
+--button to press in the network view
+local sendButton = widget.newButton{
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Ac.png",
+	overFile = "ball/Ao.png",
+	onEvent = sendPokemonHTTP --used in conjuction with the
+							  --following function's globals
+}
+sendButton.x = _W/4
+sendButton.y =  _H - 50
+sendButton:toBack( )
 isNetworkViewOn = false
 local function networkButton(event)
 	
-	-- --DOn't do anything if network stuff is already on front
-	-- if (isNetworkViewOn==true) then 
-	-- 	return
-	-- else
-	-- 	isNetworkViewOn = true
-	-- end
+	--DOn't do anything if network stuff is already on front
+	if (isNetworkViewOn==true) then 
+		return
+	else
+		isNetworkViewOn = true
+	end
 
 	myRectangle:toFront()
 
-	--Get NAME from text field
-	--Label to indicate name
+	-- --Get NAME from text field
+	-- --Label to indicate name
 	if(nameLabel~=nil)then nameLabel:removeSelf( ); nameLabel = nil end
 	nameLabel = display.newText( "Name", _W/4,
 					_H/6 , "GungsuhChe", 16)
@@ -767,6 +1043,15 @@ local function networkButton(event)
 	teamField = native.newTextField( _W/4, 7*_H/10, 126, 32)
 	teamField:addEventListener( "userInput", teamTextListener ) 
 	teamField.placeholder = netTeam
+
+	--Choose random pokemon from your score to send
+	i = math.random(400)
+	if(pokeScore[i]>0)then 
+		print("had")
+	else
+		print("didnt have")
+		return --just return if you don't have a pokemon to send
+	end
 
 	-- Display Pokemon
 	sendSheetP = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
@@ -792,103 +1077,102 @@ local function networkButton(event)
 	--Pokeball button under team... TODO
 	--Also, berry send
 
-	--Choose random pokemon from your score to send
-	i = math.random(400)
-	if(pokeScore[i]>0)then 
-		pokeScore[i] = pokeScore[i] - 1 
-	else
-		return --just return if you don't have a pokemon to send
-		print("didnt have")
-	end
-	print("sent")
-
+	--PREPARE TO SEND--
+	sendButton:toFront( )
+	isSendButtonOn = true
 
 end
 local function resetButton(event)
-	r1.instance1:removeSelf( )
-	r1.instance1 = nil
-	i = math.random(400)
-	r1.pokeID = i
-	r1.sheet1 = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
-	r1.instance1 = display.newSprite(r1.sheet1, {name="poke", start=3, count = 2, time=250})
-	r1.instance1.x = _W/2 --middle of screen!!
-	r1.instance1.y = r1.backstamps[1].y 
-	r1.instance1.xScale = 1.25
-	r1.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
-	r1.instance1:play()
-	r1.sheet1 = nil
-	r2.instance1:removeSelf( )
-	r2.instance1 = nil
-	i = math.random(400)
-	r2.pokeID = i
-	r2.sheet1 = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
-	r2.instance1 = display.newSprite(r2.sheet1, {name="poke", start=3, count = 2, time=250})
-	r2.instance1.x = _W/2 --middle of screen!!
-	r2.instance1.y = r2.backstamps[1].y 
-	r2.instance1.xScale = 1.25
-	r2.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
-	r2.instance1:play()
-	r2.sheet1 = nil
-	r3.instance1:removeSelf( )
-	r3.instance1 = nil
-	i = math.random(400)
-	r3.pokeID = i
-	r3.sheet1 = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
-	r3.instance1 = display.newSprite(r3.sheet1, {name="poke", start=3, count = 2, time=250})
-	r3.instance1.x = _W/2 --middle of screen!!
-	r3.instance1.y = r3.backstamps[1].y 
-	r3.instance1.xScale = 1.25
-	r3.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
-	r3.instance1:play()
-	r3.sheet1 = nil
+	if (r1.isPaused ~= true) then
+		r1.instance1:removeSelf( )
+		r1.instance1 = nil
+		i = math.random(400)
+		r1.pokeID = i
+		r1.sheet1 = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
+		r1.instance1 = display.newSprite(r1.sheet1, {name="poke", start=3, count = 2, time=250})
+		r1.instance1.x = _W/2 --middle of screen!!
+		r1.instance1.y = r1.backstamps[1].y 
+		r1.instance1.xScale = 1.25
+		r1.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
+		r1.instance1:play()
+		r1.sheet1 = nil
+	end
+	if (r2.isPaused ~= true) then
+		r2.instance1:removeSelf( )
+		r2.instance1 = nil
+		i = math.random(400)
+		r2.pokeID = i
+		r2.sheet1 = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
+		r2.instance1 = display.newSprite(r2.sheet1, {name="poke", start=3, count = 2, time=250})
+		r2.instance1.x = _W/2 --middle of screen!!
+		r2.instance1.y = r2.backstamps[1].y 
+		r2.instance1.xScale = 1.25
+		r2.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
+		r2.instance1:play()
+		r2.sheet1 = nil
+	end
+	if (r3.isPaused ~= true) then
+		r3.instance1:removeSelf( )
+		r3.instance1 = nil
+		i = math.random(400)
+		r3.pokeID = i
+		r3.sheet1 = graphics.newImageSheet( "allcombo/" .. tostring(i) .. "combo.png" , {width= 32, height=32,numFrames=8} )
+		r3.instance1 = display.newSprite(r3.sheet1, {name="poke", start=3, count = 2, time=250})
+		r3.instance1.x = _W/2 --middle of screen!!
+		r3.instance1.y = r3.backstamps[1].y 
+		r3.instance1.xScale = 1.25
+		r3.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
+		r3.instance1:play()
+		r3.sheet1 = nil
+	end
 
 
 end
 local button1 = widget.newButton{
-	width = 20,
-	height = 20,
-	defaultFile = "ball/1.png",
-	overFile = "ball/2.png",
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Bc.png",
+	overFile = "ball/Bo.png",
 	onEvent = handleDownButtonEvent
 }
 button1.x = _W/2
-button1.y = _H - 10
+button1.y = _H - 20
 local button2 = widget.newButton{
-	width = 20,
-	height = 20,
-	defaultFile = "ball/1.png",
-	overFile = "ball/2.png",
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Bc.png",
+	overFile = "ball/Bo.png",
 	onEvent = handleUpButtonEvent
 }
 button2.x = _W/2
-button2.y = 0 + 10
+button2.y = 0 + 20
 local button3 = widget.newButton{
-	width = 20,
-	height = 20,
-	defaultFile = "ball/1.png",
-	overFile = "ball/2.png",
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Ac.png",
+	overFile = "ball/Ao.png",
 	onEvent = newScore --updateScore
 }
 button3.x = _W/2 + 50
-button3.y =  _H - 10
+button3.y =  _H - 20
 local button4 = widget.newButton{
-	width = 20,
-	height = 20,
-	defaultFile = "ball/1.png",
-	overFile = "ball/2.png",
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Ac.png",
+	overFile = "ball/Ao.png",
 	onEvent = networkButton
 }
 button4.x = _W/2 + 50 + 50
-button4.y =  _H - 10
+button4.y =  _H - 20
 local button5 = widget.newButton{
-	width = 20,
-	height = 20,
-	defaultFile = "ball/1.png",
-	overFile = "ball/2.png",
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Ac.png",
+	overFile = "ball/Ao.png",
 	onEvent = resetButton
 }
 button5.x = _W/2 + 50 + 50 + 50
-button5.y =  _H - 10
+button5.y =  _H - 20
 --END BUTTON STUFF
 
 local function move(event)
@@ -897,29 +1181,41 @@ local function move(event)
 		hi = r1:moveBackground()
 		--Both poke and berry
 		if(r1.notBerry == false) then  hey = r1:moveBerry(event)
-		else ho = r1:moveAndMakeWildPokemon(event) end
+		else 
+			if r1.isNPCnotP == true then  ho = r1:moveAndMakeNPC(event) 
+			else ho = r1:moveAndMakeWildPokemon(event) end
+		end
 	end
 	if(not r2.isPaused) then
 		hi = r2:moveBackground()
 		--Both poke and berry
 		if(r2.notBerry == false) then  hey = r2:moveBerry(event)
-		else ho = r2:moveAndMakeWildPokemon(event) end
+		else 
+			if r2.isNPCnotP == true then  ho = r2:moveAndMakeNPC(event) 
+			else ho = r2:moveAndMakeWildPokemon(event) end
+		end
 	end
 	if(not r3.isPaused) then
 		hi = r3:moveBackground()
 		--Both poke and berry
 		if(r3.notBerry == false) then  hey = r3:moveBerry(event)
-		else ho = r3:moveAndMakeWildPokemon(event) end
+		else 		
+			if r3.isNPCnotP == true then  ho = r3:moveAndMakeNPC(event) 
+			else ho = r3:moveAndMakeWildPokemon(event) end
+		end
 	end
 
 	if(r1.eventRunning == true) then 
-		hi = r1:checkDone(event)
+		if r1.isNPCnotP == true then hi = r1:checkDoneNPC(event)
+		else hi = r1:checkDone(event) end
 	end
 	if(r2.eventRunning == true) then 
-		hi = r2:checkDone(event)
+		if r2.isNPCnotP == true then hi = r2:checkDoneNPC(event)
+		else hi = r2:checkDone(event) end
 	end
 	if(r3.eventRunning == true) then 
-		hi = r3:checkDone(event)
+		if r3.isNPCnotP == true then hi = r3:checkDoneNPC(event)
+		else hi = r3:checkDone(event) end
 	end
 
 
@@ -934,6 +1230,12 @@ local function move(event)
 	if(r1.instanceBorn~=nil)then r1.instanceBorn:toFront( ) end
 	if(r2.instanceBorn~=nil)then r2.instanceBorn:toFront( ) end
 	if(r3.instanceBorn~=nil)then r3.instanceBorn:toFront( ) end
+
+	--CPU BENCHMARK
+	-- local x = os.clock()
+ --    local s = 0
+ --    for i=1,100000 do s = s + i end
+ --    print(string.format("elapsed time: %.2f\n", os.clock() - x))
 
 	--Display Memory Usage (Debug)
 	-- myRectangle:toFront( )
