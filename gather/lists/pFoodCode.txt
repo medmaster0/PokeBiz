@@ -1,213 +1,90 @@
 1
-
 Grilled #
-
 Roast #
-
 # bacon
-
 # n waffles
-
-
-
-3
-
-# burger
-
-# sausage
-
-Teriyaki #
-
-Sweet n sour #
-
-
-
-5
-
-Fried #
-
-# nuggets
-
-# potpie
-
-General Tso's #
-
-
-
-7
-
-# sauce
-
-# stew
-
-# mole
-
-# gelatin
-
-
-
-9
-
-# burrito
-
-# falafel
-
-# tacos
-
-# chili
-
-
-
-11
-
-# stone soup
-
-# cake
-
-# pie
-
-# potato
-
-
-
-13
-
-# legs
-
-Chocolate covered #
-
-# chips
-
-#-on-a-Stick
-
-
-
-15
-
-# tea
-
-# bourbon
-
-# powder
-
-# protein shake
-
-
-
-17
-
-# quicksilver
-
-# husk
-
-# crumble
-
-# melt
-
-
-
 2
-
 Flame broiled #
-
 Cajun #
-
 BBQ #
-
 spicy # gumbo
-
-
-
+3
+# burger
+# sausage
+Teriyaki #
+Sweet n sour #
 4
-
 # soup
-
 # broth
-
 # sashimi
-
 # paella
-
-
-
+5
+Fried #
+# nuggets
+# potpie
+General Tso's #
 6
-
 # wrap
-
 # salad
-
 # shish kabob
-
 Pickled #
-
-
-
+7
+# sauce
+# stew
+# mole
+# gelatin
 8
-
 # bar
-
 # lemonade
-
 # margarita
-
 # sorbet
-
-
-
+9
+# burrito
+# falafel
+# tacos
+# chili
 10
-
 # creme brule
-
 # chowder
-
 # souffle
-
 # mousse
-
-
-
+11
+# stone soup
+# cake
+# pie
+# potato
 12
-
 # slush
-
 # ice cream
-
 #-sicle
-
 # pop
-
-
-
+13
+# legs
+Chocolate covered #
+# chips
+#-on-a-Stick
 14
-
 Spicy #
-
 # sushi roll
-
 # tongue
-
 # jambalaya
-
-
-
+15
+# tea
+# bourbon
+# powder
+# protein shake
 16
-
 # liver and onions
-
 # heart
-
 # burek
-
 # blood pudding
-
-
-
+17
+# quicksilver
+# husk
+# crumble
+# melt
 18
-
 # cupcake
-
 # tart
-
 # scone
-
 # danish

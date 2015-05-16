@@ -168,12 +168,18 @@ same idea on send screen
 
 Heroku Random Message Generation
 
+EXPANSION: add "Post Event"
+>>A second tier of events
+
 Ideas for "pokeball views"
 >Send (already kind of have)
 >Send to War
 >Send to Wild
 >Cook
 
+
+SCROLLING
+>>Environment changes according to type?
 
 Broadcast BATTLE MECHANISM
 Players send pokemon to online queue

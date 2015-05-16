@@ -240,7 +240,7 @@
 
 #121:Starmie
 
-#122:Mime
+#122:Mr. Mime
 
 #123:Scyther
 
@@ -898,7 +898,7 @@
 
 #438:Bonsly
 
-#439:Jr.
+#439:Mime Jr.
 
 #440:Happiny
 

@@ -5,7 +5,7 @@
 -----------------------------------------------------------------------------------------
 local widget = require("widget")
 
-local baseline = 280
+local baseline = 280 --NOT USED CURRENTLY
 local i = math.random( 400)
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
@@ -49,8 +49,19 @@ for i=1, berrycount do berryScore[i] = 0 end
 
 --WILD POKEMON STUFF
 pokeScore = {}
-for i=1, 400 do pokeScore[i] = 0 end
+for i=1, 400 do pokeScore[i] = 0 end --initialize score
+
 --TODO: Load name list, pNameList.txt
+local namePath = system.pathForFile( "lists/pNameList.txt", system.ResourceDirectory )
+local nameFile = io.open(namePath, "r")
+io.input(nameFile)
+poke2name = {} --dictionary containing type info
+for i = 1, 1470 do 
+	for k,v in string.gmatch(io.read(), "#(%d+):(.*)") do
+		poke2name[tonumber(k)] = v
+	end
+end
+io.close(nameFile)
 
 
 --EGG STUFF
@@ -69,7 +80,7 @@ io.close(eggFile)
 local eggPath = system.pathForFile( "eggs/evosID.txt" , system.ResourceDirectory )
 local eggFile = io.open(eggPath, "r")
 io.input( eggFile )
-local egg2poke = {}
+local egg2poke = {} --dictionary containing hatch info: eggID:poke!D
 for i = 1, 209 do
 	for k,v in string.gmatch( io.read(), "(%d+):(%d*)" ) do
 		egg2poke[i] = tonumber(k)
@@ -78,15 +89,61 @@ end
 io.close(eggFile)
 
 --TYPE STUFF
---TODO load poke type list: pTypesEncoded.txt
---TODO load poke type behavior: pTypeBehavior.txt
+--load poke type list: pTypesEncoded.txt
+local typePath = system.pathForFile( "lists/pTypesEncoded.txt", system.ResourceDirectory )
+local typeFile = io.open(typePath, "r")
+io.input(typeFile)
+local poke2type = {} --dictionary containing type info: pokeID:table of typeID (see pTypeCodes.txt for mapping)
+for i = 1,2517 do 
+	for k,v,l in string.gmatch( io.read(), "#(%d+):(%d*),(%d*)") do
+		poke2type[tonumber(k)] = {tonumber(v), tonumber(l)}
+	end
+end
+io.close(typeFile)
+
+--load poke type behavior: pTypeBehavior.txt
+local typePath = system.pathForFile( "lists/pTypeBehavior.txt", system.ResourceDirectory)
+local typeFile = io.open(typePath, "r")
+io.input(typeFile)
+local type2effect = {} --dictionary containing type behavior: typeID:table of tyepID's that it's super effective vs
+for i = 1,18 do
+	j = 1 --index for the subdictiona
+	type2effect[i] = {} --subtables for list for each type
+	for k in string.gmatch(io.read(), "%d+") do
+		type2effect[i][j] = tonumber(k)
+		j = j+1
+	end
+end
+io.close(typeFile)
+--function to determine who wins between two types (POSSIBLY INEFFICIENT!!! --just barely, though)
+function isEffective(primType, secoType)
+	local x = primType
+	local y = secoType
+	maxLength = 5--The length of the longest subtable in type2effective (most types effective against)
+	for i = 1, maxLength do
+		if(y==type2effect[x][i]) then return(true) end
+	end
+	return(false)
+end
 
 --FOOD STUFF
 --TODO load poke food list: pFoodCode.txt
-
-
-
-
+local foodPath = system.pathForFile("lists/pFoodCode.txt", system.ResourceDirectory)
+local foodFile = io.open(foodPath, "r")
+io.input(foodFile)
+local type2food = {} --dictionary for food strings, sorted by type: typeID:table of food strings
+for i = 1,90 do
+	holder = io.read( )
+	if (i%5==1) then --first of five numbers corresponds to type code
+		k = tonumber(holder)
+		type2food[k] = {}
+		j = 1 --used for a counter for the sub tables
+	else -- the remaining 4 of 5 lines are for the food strings, themselves
+		type2food[k][j] = holder
+		j = j+1
+	end
+end
+print(type2food[3][2])
 --START WAY TO LOAD DATA
 --Berry File 
 local p = system.pathForFile( "inv.txt",system.DocumentsDirectory )
@@ -207,8 +264,14 @@ end
 local function newScore()
 	myRectangle:toFront( )
 	yourRectangle:toFront( )
+
 	--turn off the network view
+	--AKA be awarre of other BUTTONS
 	if isNetworkViewOn == true then isNetworkViewOn = false end
+	if (isSendButtonOn~=nil) then isSendButtonOn = false end
+	if (sendButton ~=nil) then sendButton:toBack( ) end
+	if isCookViewOn == true then isCookViewOn = false end
+	if (isCookButtonOn ~=nil) then isCookButtonOn = false end
 
 	if(nameField~=nil)then nameField:removeSelf( ); nameField = nil end
 	if(teamField~=nil)then teamField:removeSelf( ); teamField = nil end
@@ -226,66 +289,72 @@ local function newScore()
 				--Scale used to be 0.625 (and the others adjusted accordingly)
 				icons[d].xScale = 0.5
 				icons[d].yScale = 0.5
-				icons[d].x = 0 + icons[d].width*icons[d].xScale + (icons[d].xScale*icons[d].width)
+				icons[d].x = 0 + icons[d].width*icons[d].xScale 
 				icons[d].y = ( 2*d - 1 ) * (icons[d].yScale*icons[d].height) + iconOffset
 				--For text
 				if(texts[d] ~= nil) then texts[d]:removeSelf( ) end
 				texts[d] = display.newText( berryScore[checkScore], icons[d].x,
 											 icons[d].y -(icons[d].xScale*icons[d].width) , "GungsuhChe", 16)
-				-- texts[i]:setFillColor( 1,0.6,0.05  )
-				texts[d]:setFillColor( 0.2,0.2,0.6  )
+				texts[d]:setFillColor( 1,0,0.9  )
+				--texts[d]:setFillColor( 0.2,0.2,0.6  )
 
-				--For trees
+				--For tree
+				if(treeSheet~=nil)then treeSheet=nil end
 				treeSheet = graphics.newImageSheet("treespace/"..name.."comboS.png",
 					{width = 32, height = 32, numFrames=5})
 				if(trees[d] ~= nil) then trees[d]:removeSelf( ) end
 				trees[d] = display.newSprite(treeSheet, 
 					{name=tostring(d), start=1, count=5, time=math.random(7000,20000)})
-				trees[d].x = icons[d].x - (icons[d].xScale*icons[d].width)
-				trees[d].y = icons[d].y
+				trees[d].x = icons[d].x + (icons[d].xScale*icons[d].width)
+				trees[d].y = icons[d].y - (trees[d].width/2)
 				trees[d].id = checkScore --berryid number of the tree
 
 				trees[d]:play()
 
 				trees[d]:addEventListener( "sprite", spriteListener )
 
-				--for grass
+				--for custome fence sheet
+				if(fenceSheet~=nil) then fenceSheet = nil end
+				fenceSheet = graphics.newImageSheet("backs/fenceplot.png",
+					{width = 16, height = 16, numFrames=9})
+				
+				--for grass		
 				if(grass[d]~=nil) then grass[d]:removeSelf() end
-				grass[d] = display.newImageRect(colorSheet, 26,16,16)
-				grass[d].x = trees[d].x
-				grass[d].y = trees[d].y
+				grass[d] = display.newImageRect(fenceSheet, 4,16,16)
+				grass[d].x = icons[d].x
+				grass[d].y = icons[d].y
 				grass[d].xScale = 2
 				grass[d].yScale = 2
 				if(grass2[d]~=nil) then grass2[d]:removeSelf() end
-				grass2[d] = display.newImageRect(colorSheet, 126,16,16)
-				grass2[d].x = trees[d].x
-				grass2[d].y = trees[d].y - (icons[d].xScale*icons[d].width)
+				grass2[d] = display.newImageRect(fenceSheet, 1,16,16)
+				grass2[d].x = icons[d].x
+				grass2[d].y = icons[d].y - (icons[d].xScale*icons[d].width)
 				grass2[d].xScale = 2
 				grass2[d].yScale = 2
 
 				--for huts
 				if(huts[d]~=nil)then huts[d]:removeSelf( ) end
-				huts[d] = display.newImageRect(colorSheet, 429,16,16)
-				huts[d].x = trees[d].x + (icons[d].xScale*icons[d].width)
-				huts[d].y = trees[d].y
+				huts[d] = display.newImageRect(fenceSheet, 5,16,16)
+				huts[d].x = icons[d].x + (icons[d].xScale*icons[d].width)
+				huts[d].y = icons[d].y
 				huts[d].xScale = 2
 				huts[d].yScale = 2
 				if(hutRoofs[d]~=nil)then hutRoofs[d]:removeSelf( ) end
-				hutRoofs[d] = display.newImageRect(colorSheet, 377,16,16)
-				hutRoofs[d].x = trees[d].x + (icons[d].xScale*icons[d].width)
-				hutRoofs[d].y = trees[d].y - (icons[d].xScale*icons[d].width)
+				hutRoofs[d] = display.newImageRect(fenceSheet, 2,16,16)
+				hutRoofs[d].x = icons[d].x + (icons[d].xScale*icons[d].width)
+				hutRoofs[d].y = icons[d].y - (icons[d].xScale*icons[d].width)
 				hutRoofs[d].xScale = 2
 				hutRoofs[d].yScale = 2
 				if(huts2[d]~=nil)then huts2[d]:removeSelf( ) end
-				huts2[d] = display.newImageRect(colorSheet, 432,16,16) --maybe tile 310
-				huts2[d].x = trees[d].x + 2*(icons[d].xScale*icons[d].width)
-				huts2[d].y = trees[d].y
+				huts2[d] = display.newImageRect(fenceSheet, 6,16,16) --maybe tile 310
+				huts2[d].x = icons[d].x + 2*(icons[d].xScale*icons[d].width)
+				huts2[d].y = icons[d].y
 				huts2[d].xScale = 2
 				huts2[d].yScale = 2
 				if(hutRoofs2[d]~=nil)then hutRoofs2[d]:removeSelf( ) end
-				hutRoofs2[d] = display.newImageRect(colorSheet, 380,16,16)
-				hutRoofs2[d].x = trees[d].x + 2*(icons[d].xScale*icons[d].width)
-				hutRoofs2[d].y = trees[d].y - (icons[d].xScale*icons[d].width)
+				hutRoofs2[d] = display.newImageRect(fenceSheet, 3,16,16)
+				hutRoofs2[d].x = icons[d].x + 2*(icons[d].xScale*icons[d].width)
+				hutRoofs2[d].y = icons[d].y - (icons[d].xScale*icons[d].width)
 				hutRoofs2[d].xScale = 2
 				hutRoofs2[d].yScale = 2
 
@@ -325,29 +394,34 @@ local function newScore()
 				if(textsP[d] ~= nil) then textsP[d]:removeSelf( ) end
 				textsP[d] = display.newText( pokeScore[checkScore], iconsP[d].x+(iconsP[d].xScale*iconsP[d].width),
 											 iconsP[d].y, "GungsuhChe", 16)
-				--textsP[i]:setFillColor( 1,0.05,0.8 )
-				textsP[d]:setFillColor( 1,0.8,0.05 )
+				textsP[d]:setFillColor( 0.9,00.4,0.08 )
+				--textsP[d]:setFillColor( 1,0.6,0.25 )
+
+				--for custom wood fence sheet
+				if(woodSheet ~= nil) then woodSheet = nil end
+				woodSheet = graphics.newImageSheet("backs/fencewood.png",
+					{width = 16, height = 16, numFrames=20})
 
 				--For corrall/fields that go with pokemon
 				--if(fields[i] ~= nil) then textsP[i]:removeSelf( ) end
-				fields[d] = display.newImageRect(colorSheet, 151, 16,16)
+				fields[d] = display.newImageRect(woodSheet, 14, 16,16)
 				fields[d].x = iconsP[d].x
 				fields[d].y = iconsP[d].y
 				fields[d].xScale = 2
 				fields[d].yScale = 2
-				fields2[d] = display.newImageRect(colorSheet, 567, 16,16)
+				fields2[d] = display.newImageRect(woodSheet, 14, 16,16)
 				fields2[d].x = iconsP[d].x + (fields[d].yScale*fields[d].height)
 				fields2[d].y = iconsP[d].y
 				fields2[d].xScale = 2
 				fields2[d].yScale = 2
 
 				--For fences that go with pokemon
-				fences[d] = display.newImageRect(colorSheet, 195 , 16,16)
+				fences[d] = display.newImageRect(woodSheet, 12 , 16,16)
 				fences[d].x = fields[d].x
 				fences[d].y = fields[d].y - (fields[d].yScale*fields[d].height)
 				fences[d].xScale = 2
 				fences[d].yScale = 2
-				fences2[d] = display.newImageRect(colorSheet, 195 , 16,16)
+				fences2[d] = display.newImageRect(woodSheet, 12 , 16,16)
 				fences2[d].x = fields2[d].x
 				fences2[d].y = fields2[d].y - (fields[d].yScale*fields[d].height)
 				fences2[d].xScale = 2
@@ -379,13 +453,18 @@ end
 --background
 local backsheet1 = graphics.newImageSheet( "bluetileT.png", {width = 16, height=16, numFrames=480} ) --30 columns
 
+--misc
+local typeSheet = graphics.newImageSheet("misc/typeicons.png", {width = 50, height=17, numFrames=18})
+
 --DEFINE The Ribbon Object
 local Ribbon = { 
 	tiles_per_row = 10,
 	ypos = 0,
 	berryID = 0, --berryID corresponds to the ribbon's berry type
 	pokeID = 0, --the ribbon's pokemon's ID
+	typeID = 0, --integer corresponding to type code of ribbon's poke
 	wildID = 0, --wildID corresponds to the wild pokemon's ID
+	wTypeID = 0, --type code of wild
 	emoteID = 0, --the wild pokemon's emotion ID
 	eggID = 0, --the ID of the pokemon egg (if there is one)
 	pokeLevel = 1, --the pokemon's level
@@ -451,6 +530,17 @@ function Ribbon:setup()
 	self.instance1.xScale = 1.25
 	self.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
 	self.instance1:play()
+
+	--PokeTYPE
+	if (math.random() > 0.5) then
+		self.typeID = poke2type[self.pokeID][1]
+	else
+		if (poke2type[self.pokeID][2]~=nil)then self.typeID = poke2type[self.pokeID][2]
+		else self.typeID = poke2type[self.pokeID][1] end
+	end
+	self.type = display.newImageRect(typeSheet, self.typeID,50,17)
+	self.type.x = self.instance1.x + 4
+	self.type.y = self.instance1.y - (self.instance1.height*self.instance1.yScale)
 
 	-- Berry
 	i = math.random(berrycount)
@@ -535,6 +625,19 @@ function Ribbon:moveAndMakeWildPokemon(event)
 		self.instance2.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
 		self.instance2:play()
 		self.sheet2 = nil
+
+		--PokeTYPE
+		if (self.wType~=nil)then self.wType:removeSelf( ); self.wType = nil end
+		if (math.random() > 0.5) then
+			self.wType = poke2type[self.wildID][1]
+		else
+			if (poke2type[self.wildID][2]~=nil)then self.wType = poke2type[self.wildID][2]
+			else self.wType = poke2type[self.wildID][1] end
+		end
+		self.wType = display.newImageRect(typeSheet, self.wType,50,17)
+		self.wType.x = _W - ((r2.instance1.height*r2.instance1.yScale) - 16)
+		self.wType.y = self.instance1.y - (r2.instance1.height*r2.instance1.yScale)
+
 		--Emoticon
 		self.emoteID = math.random(3)
 		self.sheetE = nil
@@ -590,6 +693,7 @@ function encounterWild(self,event)
 			return
 		end
 		if (self.emoteID == 2) then
+			--if emote is fighting exclamation
 			self.isPaused = true
 			self.eventRunning = true
 
@@ -603,6 +707,11 @@ function encounterWild(self,event)
 			self.eventInstance:play( )
 			self.eventTimer = system.getTimer( )
 			self.eventSheet = nil
+
+			-- for word in type2effect[wTypeID] do
+			-- 	print(word)
+			-- end
+
 			return
 		end
 		if (self.emoteID == 3) then
@@ -709,6 +818,9 @@ function Ribbon:checkDone(event)
 			pokeScore[self.wildID] = pokeScore[self.wildID] + 1
 			saveDataArray(2, berryScore, pokeScore)
 		end
+
+		--remove type
+		if(self.wType~=nil)then self.wType:removeSelf( );self.wType=nil end
 
 		--decide whether to prompt an NPC or a wild poke
 		if (math.random()>0.7) then self.isNPCnotP = true else self.isNPCnotP = false end
@@ -848,7 +960,6 @@ function Ribbon:checkDoneNPC(event)
 	if((event.time - self.eventTimer)>math.random(5000,10000))then
 		
 		if(self.hasMail == false) then --if not have mail, give it some
-			print("happened")
 			--make room for mail
 			if(self.badgeInstance~=nil)then self.badgeInstance:removeSelf( );self.badgeInstance = nil end
 			--make the mail if need be
@@ -1012,6 +1123,9 @@ sendButton.y =  _H - 50
 sendButton:toBack( )
 isNetworkViewOn = false
 local function networkButton(event)
+	--AKA be aware of other BUTTONS
+	if isCookViewOn == true then isCookViewOn = false end
+	if (isCookButtonOn ~=nil)then isCookButtonOn = false end
 	
 	--DOn't do anything if network stuff is already on front
 	if (isNetworkViewOn==true) then 
@@ -1096,6 +1210,17 @@ local function resetButton(event)
 		r1.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
 		r1.instance1:play()
 		r1.sheet1 = nil
+		--PokeTYPE
+		if(r1.type~=nil)then r1.type:removeSelf( ); r1.type = nil end
+		if (math.random() > 0.5) then
+			r1.typeID = poke2type[r1.pokeID][1]
+		else
+			if (poke2type[r1.pokeID][2]~=nil)then r1.typeID = poke2type[r1.pokeID][2]
+			else r1.typeID = poke2type[r1.pokeID][1] end
+		end
+		r1.type = display.newImageRect(typeSheet, r1.typeID,50,17)
+		r1.type.x = r1.instance1.x + 4
+		r1.type.y = r1.instance1.y - (r1.instance1.height*r1.instance1.yScale)
 	end
 	if (r2.isPaused ~= true) then
 		r2.instance1:removeSelf( )
@@ -1110,6 +1235,17 @@ local function resetButton(event)
 		r2.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
 		r2.instance1:play()
 		r2.sheet1 = nil
+		--PokeTYPE
+		if (r2.type~=nil)then r2.type:removeSelf( ); r2.type = nil end
+		if (math.random() > 0.5) then
+			r2.typeID = poke2type[r2.pokeID][1]
+		else
+			if (poke2type[r2.pokeID][2]~=nil)then r2.typeID = poke2type[r2.pokeID][2]
+			else r2.typeID = poke2type[r2.pokeID][1] end
+		end
+		r2.type = display.newImageRect(typeSheet, r2.typeID,50,17)
+		r2.type.x = r2.instance1.x + 4
+		r2.type.y = r2.instance1.y - (r2.instance1.height*r2.instance1.yScale)
 	end
 	if (r3.isPaused ~= true) then
 		r3.instance1:removeSelf( )
@@ -1124,8 +1260,226 @@ local function resetButton(event)
 		r3.instance1.yScale = 1.25 --Half tile scale since this is 32x32 and tile is 16x16
 		r3.instance1:play()
 		r3.sheet1 = nil
+		--PokeTYPE
+		if(r3.type~=nil)then r3.type:removeSelf( ); r3.type = nil end
+		if (math.random() > 0.5) then
+			r3.typeID = poke2type[r3.pokeID][1]
+		else
+			if (poke2type[r3.pokeID][2]~=nil)then r3.typeID = poke2type[r3.pokeID][2]
+			else r3.typeID = poke2type[r3.pokeID][1] end
+		end
+		r3.type = display.newImageRect(typeSheet, r3.typeID,50,17)
+		r3.type.x = r3.instance1.x + 4
+		r3.type.y = r3.instance1.y - (r3.instance1.height*r3.instance1.yScale)
 	end
 
+end
+--COOK BUTTON STUFF
+isCookViewOn = false
+--Label to indicate cook
+cookLabel = display.newText( "Cook", _W/4,
+				_H/6 , "GungsuhChe", 16)
+cookLabel:toBack( )
+kitchenLabel = display.newText( "Kitchen", _W/4,
+				3*_H/5 , "GungsuhChe", 16)
+kitchenLabel:toBack( )
+cookSheetB = graphics.newImageSheet( "ball/D.png" , {width= 32, height=32,numFrames=3} )
+cookBall = display.newSprite(cookSheetB, {name="cookBall", start=1, count = 3, time=250})
+cookBall.x = _W/4
+cookBall.y =  _H - 50
+cookBall:play( )
+cookBall:toBack( )
+cookSheet = nil
+cookID = 0 --The ID corresponding to the poke we're going to cook
+cookTypeID = 0 --The type of the pokemon we're cooking
+cookEmoteID = 0 --The id of the emote of the cooked pokemon
+--Sub Cook Pokeball Button
+isCookButtonOn = false --DIFFERENT THAN ISCOOKVIEWON
+madeLabel = display.newText( "Done Cooking", _W/4,
+				_H/6 , "GungsuhChe", 16)
+madeLabel:toBack( )
+dishName = "" --String containing dish food name
+dishPoke = "" --String containing dish poke name
+local function cookPokemonDish(event)
+
+	--Do nothing if button is not enabled
+	if isCookButtonOn == false then return end
+	isCookButtonOn = false
+	isCookViewOn = false
+
+	myRectangle:toFront()
+	madeLabel:toFront( )
+
+	--Color Pokemon Name?
+	dishName = poke2name[cookID]
+	if nameLabel~=nil then nameLabel:removeSelf( ); nameLabel=nil end
+	nameLabel = display.newText(dishName, _W/4,
+				_H/4, "GungsuhChe", 16) --Height used to be _H/3
+	if (cookTypeID == 1 ) then
+		nameLabel:setFillColor( 0.7,0.7,0.7 )
+	elseif (cookTypeID == 2) then
+		nameLabel:setFillColor( 1,0.6,0.2 )
+	elseif (cookTypeID == 3) then
+		nameLabel:setFillColor( 1,0.5,0.5 )
+	elseif (cookTypeID == 4) then
+		nameLabel:setFillColor( 0.4,0.6,1 )
+	elseif (cookTypeID == 5) then	
+		nameLabel:setFillColor( 0.2,0.8,1 )
+	elseif (cookTypeID == 6) then	
+		nameLabel:setFillColor( 0.6,0.9,0.5 )
+	elseif (cookTypeID == 7) then	
+		nameLabel:setFillColor( 0.9,0.6,1 )
+	elseif (cookTypeID == 8) then	
+		nameLabel:setFillColor( 1,0.9,0 )
+	elseif (cookTypeID == 9) then	
+		nameLabel:setFillColor( 0.9,0.8,0.6 )
+	elseif (cookTypeID == 10) then	
+		nameLabel:setFillColor( 1,0.2,0.7 )
+	elseif (cookTypeID == 11) then	
+		nameLabel:setFillColor( 0.3,0.2,0.2 )
+	elseif (cookTypeID == 12) then	
+		nameLabel:setFillColor( 0.5,0.6,0.9 )
+	elseif (cookTypeID == 13) then	
+		nameLabel:setFillColor( 0.6,0.8,0.5 )
+	elseif (cookTypeID == 14) then	
+		nameLabel:setFillColor( 0.3,0.4,0.6 )
+	elseif (cookTypeID == 15) then	
+		nameLabel:setFillColor( 0.7,0.4,1 )
+	elseif (cookTypeID == 16) then	
+		nameLabel:setFillColor( 0.4,0.4,0.4 )
+	elseif (cookTypeID == 17) then	
+		nameLabel:setFillColor( 0.6,0.6,0.8 )
+	elseif (cookTypeID == 18) then	
+		nameLabel:setFillColor( 1,0.5,0.8 )
+	end
+
+	--White Food Name?
+	i = math.random(1,4)
+	dishName = 	type2food[cookTypeID][i]
+	one, two = dishName:match("([^#]*)#([^#]*)")
+	if(one~=nil)then
+		if(foodLabel1~=nil)then foodLabel1:removeSelf( ); foodLabel1=nil end
+		foodLabel1 = display.newText(one, _W/4,
+			_H/4, "GungsuhChe", 16)
+	end
+	if(two~=nil)then
+		if(foodLabel2~=nil)then foodLabel2:removeSelf( ); foodLabel2=nil end
+		foodLabel2 = display.newText(two, _W/4,
+			_H/4, "GungsuhChe", 16)
+	end
+	--Determine total width of all three labels
+	local totalWidth = 0
+	totalWidth = totalWidth + nameLabel.width
+	if(one~=nil)then totalWidth = totalWidth + foodLabel1.width end
+	if(two~=nil)then totalWidth = totalWidth + foodLabel2.width end
+	--Calculate important points
+	local left = _W/4 - (totalWidth/2) --the left boundary
+	local right = _W/4 + (totalWidth/2) --the right boundary
+	--Put labels in proper places
+	if(one~=nil)then foodLabel1.x = left + (foodLabel1.width/2) end
+	if(two~=nil)then foodLabel2.x = right - (foodLabel2.width/2) end
+	if(one~=nil)then
+		nameLabel.x = foodLabel1.x + (foodLabel1.width/2) + (nameLabel.width/2)
+	else
+		nameLabel.x = foodLabel2.x - (foodLabel2.width/2) - (nameLabel.width/2)
+	end
+	--Put first label in correct spot
+
+
+
+	--Describe how it tastes
+
+
+	--Center the three different strings
+
+
+
+	--Subtract from score
+
+	print("YEAH")
+
+end
+--button to press in the network view
+local cookButtonButton = widget.newButton{
+	width = 40,
+	height = 40,
+	defaultFile = "misc/takE.png",
+	overFile = "misc/takE.png",
+	onEvent = cookPokemonDish --Used in conjuction with the previous globals
+}
+cookButtonButton.x = _W/4
+cookButtonButton.y =  _H - 50
+cookButtonButton:toBack( )
+local function cookButton(event)
+
+	--AKA be aware of other BUTTONS
+	if isNetworkViewOn == true then isNetworkViewOn = false end
+	if (isSendButtonOn~=nil) then print("turned off"); isSendButtonOn = false end
+	if (sendButton ~=nil) then sendButton:toBack( ) end
+
+	--DOn't do anything if network stuff is already on front
+	if (isCookViewOn==true) then 
+		return
+	else
+		isCookViewOn = true
+	end
+
+	myRectangle:toFront()
+	cookLabel:toFront( )
+	kitchenLabel:toFront( )
+	cookBall:toFront( )
+	cookButtonButton:toFront( )
+	isCookButtonOn = true
+
+	--Select first pokemon to cook
+	print(pCursor)
+	for i = pCursor,400 do
+		if(pokeScore[i] ~= 0)then cookID = i; break end
+	end
+	if cookID == 0 then --then it hasn't found poke
+		for i = 1, pCursor do
+			if(pokeScore[i]~=0)then cookID = i; break end
+		end
+	end
+
+	--Determine type
+	if (math.random() > 0.5) then
+		cookTypeID = poke2type[cookID][1]
+	else
+		if (poke2type[cookID][2]~=nil)then cookTypeID = poke2type[cookID][2]
+		else cookTypeID = poke2type[cookID][1] end
+	end
+
+	-- Display Pokemon
+	 cookSheetP = graphics.newImageSheet( "allcombo/" .. tostring(cookID) .. "combo.png" , {width= 32, height=32,numFrames=8} )
+	if(cookPoke~=nil)then cookPoke:removeSelf( ); cookPoke = nil end
+	cookPoke = display.newSprite(cookSheetP, {name="pokeC", start=5, count = 2, time=250})
+	cookPoke.x = _W/4
+	cookPoke.y = _H/2
+	--(No Scale for these pokemon)
+	cookPoke:play()
+	cookSheetP = nil
+	--PokeTYPE
+	if(cookType~=nil)then cookType:removeSelf( ); cookType = nil end
+	cookType = display.newImageRect(typeSheet, cookTypeID,50,17)
+	cookType.x = _W/4
+	cookType.y = _H/4
+	--Emoticon
+	cookEmoteId = math.random(3)
+	if(cookEmote ~= nil)then cookEmote:removeSelf(); cookEmote = nil end
+	cookSheetE = graphics.newImageSheet( "emotion/" .. tostring(cookEmoteId) .. ".png", {width=16, height = 16, numFrames=2})
+	cookEmote = display.newSprite(cookSheetE, {name="emoteC", start = 1, count = 2, time=500})
+	cookEmote.x = cookPoke.x
+	cookEmote.y = cookPoke.y - 2*(cookEmote.height*cookEmote.yScale)
+	cookEmote.xScale = 2
+	cookEmote.yScale = 2
+	cookEmote:play( )
+	cookSheetE = nil
+
+
+	print("YEEHEHEHEH")
+	print(cookID)
+	print(cookTypeID)
 
 end
 local button1 = widget.newButton{
@@ -1173,6 +1527,15 @@ local button5 = widget.newButton{
 }
 button5.x = _W/2 + 50 + 50 + 50
 button5.y =  _H - 20
+local button6 = widget.newButton{
+	width = 40,
+	height = 40,
+	defaultFile = "ball/Cc.png",
+	overFile = "ball/Co.png",
+	onEvent = cookButton
+}
+button6.x = _W/2 + 50 + 50 + 50 + 50
+button6.y =  _H - 18 --special case
 --END BUTTON STUFF
 
 local function move(event)
@@ -1226,6 +1589,10 @@ local function move(event)
 	if(r1.egg ~= nil) then r1.egg:toFront( ) ; r1.hatch:toFront( ) end
 	if(r2.egg ~= nil) then r2.egg:toFront( ) ; r2.hatch:toFront( ) end
 	if(r3.egg ~= nil) then r3.egg:toFront( ) ; r3.hatch:toFront( ) end
+
+	if(r1.mail ~= nil) then r1.mail:toFront( ) end
+	if(r2.mail ~= nil) then r2.mail:toFront( ) end
+	if(r3.mail ~= nil) then r3.mail:toFront( ) end
 
 	if(r1.instanceBorn~=nil)then r1.instanceBorn:toFront( ) end
 	if(r2.instanceBorn~=nil)then r2.instanceBorn:toFront( ) end
