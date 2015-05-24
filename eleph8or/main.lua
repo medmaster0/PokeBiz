@@ -52,12 +52,13 @@ local function levelUp(event)
 		if(back.platforms[i].y > _H) then back.platforms[i].y = 0 end
 	end
 	llc.group.y = llc.group.y + scrollOffset
+	back:foreScrollDown(scrollOffset)
 
 	--Check if scrolled enough
 	scrollCount = scrollCount - scrollOffset
 	if(scrollCount < 0) then
 		back:resetPlatforms()
-		llc.group.y = back.platforms[back.numPlats - 1].y - back.platforms[2].height*back.platforms[2].yScale
+		llc.group.y = back.platforms[back.numPlats - 1].y - 2*back.platforms[2].height*back.platforms[2].yScale
 		llc:play( )
 		Runtime:removeEventListener( "enterFrame", levelUp )
 		Runtime:addEventListener( "enterFrame", moveFunction ) --go back to regular movement
@@ -81,12 +82,13 @@ local function levelDown(event)
 		if(back.platforms[i].y < 0) then back.platforms[i].y = _H end
 	end
 	llc.group.y = llc.group.y - scrollOffset
+	back:foreScrollUp(scrollOffset)
 
 	--Check if scrolled enough
 	scrollCount = scrollCount - scrollOffset
 	if(scrollCount < 0) then
 		back:resetPlatforms()
-		llc.group.y = back.platforms[2].y - back.platforms[2].height*back.platforms[2].yScale
+		llc.group.y = back.platforms[2].y - 2*back.platforms[2].height*back.platforms[2].yScale
 		llc:play( )
 		Runtime:removeEventListener( "enterFrame", levelDown )
 		Runtime:addEventListener( "enterFrame", moveFunction ) --go back to regular movement
@@ -110,7 +112,8 @@ local function move(event)
 		if(check == 1)then 
 			print("got a landing")
 			llc.vy = -15.5
-			llc.group.y = back.platforms[i].y - back.platforms[i].height*back.platforms[i].yScale
+			--llc.vy = -14
+			llc.group.y = back.platforms[i].y - 1.5*back.platforms[i].height*back.platforms[i].yScale
 			
 			--Check if reach top
 			if (llc.group.y < _H/back.numPlats) then 
@@ -137,14 +140,14 @@ local function move(event)
 		elseif(check ==2) then
 			print("hit the ceiling")
 			llc.vy = 5.5
-			llc.group.y = back.platforms[i].y + back.platforms[i].height*back.platforms[i].yScale
+			llc.group.y = back.platforms[i].y + 1.5*back.platforms[i].height*back.platforms[i].yScale
 
 		end
 	end
 end
 
 local function onTouch(event)
-	if event.x < centerX then
+	if event.x < llc.group.x then
 		if (llc.vx > 0) then
 			llc.vx = llc.vx * -1
 			llc.group.xScale = llc.group.xScale * -1
