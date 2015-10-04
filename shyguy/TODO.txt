@@ -1,0 +1,20 @@
+TODO:
+
+Fix GunGuy shot homing
+
+Make FlyGuy turn around to pick mushroom?
+
+Check your color!: your collections contribute to your color's worldwide score.
+(What about location based grid?)
+
+WTF is wrong with the fonts?
+
+LEVELS
+--------
+
+Cave: implement fish
+
+AirShip: goombas? may have to decrease complexity of ship background sprites
+
+More Castles are fine
+Use tiny toad sprites sometime

@@ -203,3 +203,16 @@ Hardware Harvesters
 -->poke screens to plug into wall
 -->exclusive feature: choose which pokemon to harvest
 "send me an email, exchange paypal, etc etc"
+
+Release of Pokemon
+If you don’t want to eat your pokemon, you can release into the wild.
+Released pokemon will send back messages of their journeys. 
+
+Only One pokemon displayed on screen at a time.
+
+Customers!!!! CUSTOMERS!!!!
+Different types of stores: freely decide which kind
+Easy stores -> customers demand a general type
+Hard stores -> customers demand a specific Pokemon
+
+Adjust what kind of encounters you can get

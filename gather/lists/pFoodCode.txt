@@ -72,7 +72,7 @@ Spicy #
 # tea
 # bourbon
 # powder
-# protein shake
+# smoothie
 16
 # liver and onions
 # heart
